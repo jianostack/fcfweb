@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-sass": "*",
+    "gulp-minify-css": "*",
+    "gulp-uglify": "*",
+    "gulp-clean-css": "*",
+    "gulp-imagemin": "*",
+    "browser-sync": "*",
+    "jshint": "*",
+    "gulp-jshint": "*"
+  }
+}

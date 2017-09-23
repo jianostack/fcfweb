@@ -1,0 +1,17 @@
+{
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "johnpbloch/wordpress": "*",
+        "wpackagist-plugin/sermon-manager-for-wordpress":"2.3.4",
+        "wpackagist-plugin/sucuri-scanner":"*",
+        "wpackagist-plugin/advanced-custom-fields":"*",
+        "wpackagist-plugin/Akismet":"*",
+        "wpackagist-plugin/Jetpack":"*",
+        "wpackagist-plugin/Limit-Login-Attempts-Reloaded":"*"
+    }
+}
