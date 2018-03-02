@@ -22,7 +22,7 @@ composer.lock
 /license.txt
 vendor
 /composer.lock
-/wp-config-sample.php
+/wp-config.php
 
 # Hidden system files
 *.DS_Store
