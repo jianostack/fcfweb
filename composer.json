@@ -7,7 +7,7 @@
     ],
     "require": {
         "johnpbloch/wordpress": "*",
-        "wpackagist-plugin/sermon-manager-for-wordpress":"2.3.4",
+        "wpackagist-plugin/sermon-manager-for-wordpress":"*",
         "wpackagist-plugin/sucuri-scanner":"*",
         "wpackagist-plugin/advanced-custom-fields":"*",
         "wpackagist-plugin/Akismet":"*",
