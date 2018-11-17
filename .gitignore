@@ -1,6 +1,7 @@
 node_modules
 tmp
 composer.lock
+.htaccess
 
 /wordpress
 /wp-admin
