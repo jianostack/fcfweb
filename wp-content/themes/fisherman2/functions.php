@@ -28,7 +28,7 @@ add_action( 'after_setup_theme', 'fcf2013_setup' );
 function fcf2013_scripts_styles() {
   wp_enqueue_style( 'style', get_stylesheet_uri());
 
-  if ($_SERVER['SERVER_NAME'] == 'thefishermanofchrist.localhost') {
+  if ($_SERVER['SERVER_NAME'] == 'thefcforg-v2') {
     wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap302.css', null, '3.0.2' );
     wp_enqueue_style( 'theme', get_template_directory_uri() . '/css/theme.css', null, null );
     wp_enqueue_script( 'jquery' );
