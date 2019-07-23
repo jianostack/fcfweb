@@ -7,9 +7,11 @@
     ],
     "require": {
         "johnpbloch/wordpress": "*",
-        "wpackagist-plugin/sucuri-scanner":"*",
+        "wpackagist-plugin/sermon-manager-for-wordpress":"*",
         "wpackagist-plugin/advanced-custom-fields":"*",
-        "wpackagist-plugin/Akismet":"*",
-        "wpackagist-plugin/Jetpack":"*",
+        "wpackagist-plugin/updraftplus":"*",
+        "wpackagist-plugin/jetpack":"*",
+        "wpackagist-plugin/akismet":"*",
+        "wpackagist-plugin/pdf-embedder":"*"
     }
 }

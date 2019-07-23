@@ -1,26 +1,21 @@
-## Development
+## wp-config
 
-`composer install`
+````
+define('FS_METHOD', 'direct');
+define( 'DISALLOW_FILE_EDIT', true );
+````
 
-`npm i`
-
-`gulp`
-
-### WP multisite
-
-In wp-config.php before DB configs:
+# Start up
 
 ```
-define('WP_SITEURL', '//' . $_SERVER['SERVER_NAME'] );
-define('WP_HOME',    '//' . $_SERVER['SERVER_NAME'] );
-define('MULTISITE', true);
-define('SUBDOMAIN_INSTALL', true);
-define('DOMAIN_CURRENT_SITE', '127.0.0.1:8000');
-define('PATH_CURRENT_SITE', '/');
-define('SITE_ID_CURRENT_SITE', 1);
-define('BLOG_ID_CURRENT_SITE', 1);
+composer install
+ln -s /full/source/path/wp-content /full/link/path/wordpress
 ```
 
-## Distribution
+Valet link composer generated wordpress directory
 
-`gulp dist`
+`valet link`
+
+## WPML
+
+https://wpml.org/account/downloads/

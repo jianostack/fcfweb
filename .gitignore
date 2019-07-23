@@ -1,29 +1,7 @@
-node_modules
 tmp
-composer.lock
-.htaccess
-
-/wordpress
-/wp-admin
-/wp-includes
-/index.php
-/readme.html
-/wp-activate.php
-/wp-blog-header.php
-/wp-comments-post.php
-/wp-cron.php
-/wp-links-opml.php
-/wp-load.php
-/wp-login.php
-/wp-mail.php
-/wp-settings.php
-/wp-signup.php
-/wp-trackback.php
-/xmlrpc.php
-/license.txt
+wordpress
 vendor
-/composer.lock
-/wp-config.php
+composer.lock
 
 # Hidden system files
 *.DS_Store
@@ -31,8 +9,8 @@ vendor
 *.Trashes
 
 /wp-content/themes/*
-!fisherman1
-!fisherman2
+!enfisherman2013
 
-/wp-content/plugins/
+/wp-content/plugins
+
 /wp-content/uploads
