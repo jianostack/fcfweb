@@ -12,6 +12,7 @@
         "wpackagist-plugin/updraftplus":"*",
         "wpackagist-plugin/jetpack":"*",
         "wpackagist-plugin/akismet":"*",
-        "wpackagist-plugin/pdf-embedder":"*"
+        "wpackagist-plugin/pdf-embedder":"*",
+        "wpackagist-plugin/sendgrid-email-delivery-simplified":"*"
     }
 }
