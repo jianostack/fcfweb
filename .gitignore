@@ -10,6 +10,7 @@ composer.lock
 
 /wp-content/themes/*
 !enfisherman2013
+!fisherman2
 
 /wp-content/plugins
 
