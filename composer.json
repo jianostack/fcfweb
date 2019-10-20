@@ -6,6 +6,7 @@
         }
     ],
     "require": {
+        "johnpbloch/wordpress": "*",
         "wpackagist-plugin/sermon-manager-for-wordpress":"*",
         "wpackagist-plugin/advanced-custom-fields":"*",
         "wpackagist-plugin/updraftplus":"*",
