@@ -7,7 +7,7 @@ composer.lock
 *.Trashes
 /wp-content/themes/*
 !fisherman2
-!twentytwenty-beta3
+!twentytwentybeta3
 !chaplin
 /wp-content/plugins
 /wp-content/uploads

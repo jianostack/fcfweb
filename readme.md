@@ -5,7 +5,7 @@ define('FS_METHOD', 'direct');
 define( 'DISALLOW_FILE_EDIT', true );
 ````
 
-# Start up
+## Start up
 
 ```
 composer install
