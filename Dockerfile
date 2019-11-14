@@ -1,10 +1,8 @@
 FROM php:7.3-apache-stretch
 COPY user.ini $PHP_INI_DIR/conf.d/
 RUN a2enmod rewrite
-COPY ./app /var/www/html
+COPY . /var/www/html
 WORKDIR /var/www/html
-RUN mkdir public
-RUN chmod -R 0775 public
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install
 RUN ln -s /var/www/html/wp-content /var/www/html/wordpress
