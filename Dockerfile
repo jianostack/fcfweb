@@ -1,4 +1,7 @@
 FROM php:7.3-apache-stretch
+RUN apt update && apt install -y \
+    unzip \
+    zip
 COPY user.ini $PHP_INI_DIR/conf.d/
 RUN a2enmod rewrite
 COPY . /var/www/html
