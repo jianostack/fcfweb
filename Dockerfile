@@ -10,6 +10,6 @@ RUN composer install \
 
 FROM wordpress
 COPY wp-content/themes wp-content/themes
-COPY --from=vendor /app/vendor/ /var/www/html/vendor/
+COPY --from=vendor /app/vendor/wpackagist-plugin/ /var/www/html/wp-content/plugins/
 VOLUME /var/www/html/wp-content/uploads
 EXPOSE 80
