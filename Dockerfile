@@ -8,7 +8,7 @@ RUN composer install \
     --prefer-dist
 
 FROM wordpress
-COPY wp-content/themes wp-content/themes
 COPY --from=vendor /app/vendor/wpackagist-plugin/ /var/www/html/wp-content/plugins/
-VOLUME /var/www/html/wp-content/uploads
+COPY --chown=www-data:www-data . /var/www/html/ 
+VOLUME /var/www/html
 EXPOSE 80
