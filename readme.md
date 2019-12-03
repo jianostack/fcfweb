@@ -19,3 +19,9 @@ Valet link composer generated wordpress directory
 ## WPML
 
 https://wpml.org/account/downloads/
+
+## Docker
+
+`docker volume create thefcfweb-wp`
+
+`docker run -p 8080:80 --env-file .env -v thefcfweb-wp:/var/www/html thefcfweb`
