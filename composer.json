@@ -9,7 +9,6 @@
         "johnpbloch/wordpress": "*",
         "wpackagist-plugin/sermon-manager-for-wordpress":"*",
         "wpackagist-plugin/advanced-custom-fields":"*",
-        "wpackagist-plugin/updraftplus":"*",
         "wpackagist-plugin/jetpack":"*",
         "wpackagist-plugin/akismet":"*",
         "wpackagist-plugin/pdf-embedder":"*",
