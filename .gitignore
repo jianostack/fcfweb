@@ -6,8 +6,7 @@ composer.lock
 *[Tt]humbs.db
 *.Trashes
 /wp-content/themes/*
-!fisherman2
-!chaplin
+!twentytwenty-child
 /wp-content/plugins
 /wp-content/uploads
 .env*
