@@ -5,8 +5,8 @@ composer.lock
 *.DS_Store
 *[Tt]humbs.db
 *.Trashes
-/wp-content/themes/*
+wp-content/themes/*
 !twentytwenty-child
-/wp-content/plugins
-/wp-content/uploads
+plugins
+uploads
 .env*
