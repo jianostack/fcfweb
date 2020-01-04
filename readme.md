@@ -1,10 +1,3 @@
-## wp-config
-
-````
-define('FS_METHOD', 'direct');
-define( 'DISALLOW_FILE_EDIT', true );
-````
-
 ## Start up
 
 ```
@@ -14,9 +7,10 @@ ln -s /full/source/path/wp-content /full/link/path/wordpress
 
 Valet link composer generated wordpress directory
 
+`cd wordpress`
 `valet link`
 
-## WPML
+## WPML plugin
 
 https://wpml.org/account/downloads/
 
