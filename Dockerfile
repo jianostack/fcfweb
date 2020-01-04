@@ -7,7 +7,7 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
-FROM wordpress:5.3
+FROM wordpress
 COPY --from=vendor --chown=www-data:www-data /app/vendor/wpackagist-plugin/ /var/www/html/wp-content/plugins/
 COPY --chown=www-data:www-data . /var/www/html 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
