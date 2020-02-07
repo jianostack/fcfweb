@@ -1,7 +1,6 @@
 tmp
 wordpress
 vendor
-composer.lock
 *.DS_Store
 *[Tt]humbs.db
 *.Trashes
