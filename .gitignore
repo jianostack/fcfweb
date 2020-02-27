@@ -9,3 +9,4 @@ wp-content/themes/*
 plugins
 uploads
 .env*
+languages
