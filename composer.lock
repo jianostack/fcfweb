@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa2600c249ecc9c1b8b8394adf18c140",
+    "content-hash": "2e332c674480a42a8f623aacac5887a8",
     "packages": [
         {
             "name": "composer/installers",
@@ -300,15 +300,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "8.1.1",
+            "version": "8.2.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/8.1.1"
+                "reference": "tags/8.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.8.1.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/jetpack.8.2.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -339,6 +339,26 @@
             "homepage": "https://wordpress.org/plugins/pdf-embedder/"
         },
         {
+            "name": "wpackagist-plugin/polylang",
+            "version": "2.6.10",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/polylang/",
+                "reference": "tags/2.6.10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/polylang.2.6.10.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/polylang/"
+        },
+        {
             "name": "wpackagist-plugin/sendgrid-email-delivery-simplified",
             "version": "1.11.8",
             "source": {
@@ -360,7 +380,7 @@
         },
         {
             "name": "wpackagist-plugin/sermon-manager-for-wordpress",
-            "version": "2.15.16",
+            "version": "2.15.17",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/sermon-manager-for-wordpress/",
@@ -368,7 +388,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/sermon-manager-for-wordpress.zip?timestamp=1580215023",
+                "url": "https://downloads.wordpress.org/plugin/sermon-manager-for-wordpress.zip?timestamp=1582285636",
                 "reference": null,
                 "shasum": null
             },

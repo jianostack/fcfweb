@@ -36,19 +36,6 @@ function istheemailgood($errors, $sanitized_user_login, $user_email) {
 }
 add_filter( 'registration_errors', 'istheemailgood', 10, 3 );
 
-
-/**
- * Add loginout onto menus
- *
- */
-function wpsites_loginout_menu_link( $menu ) {
-    $loginout = '<li class"menu-item">'.wp_loginout($_SERVER['REQUEST_URI'], false ).'</li>';
-    $menu .= $loginout;
-    return $menu;
-}
-add_filter( 'wp_nav_menu_primary_items','wpsites_loginout_menu_link' );
-add_filter( 'wp_nav_menu_primaryzh_items','wpsites_loginout_menu_link' );
-
 /**
  * Remove Private: from page titles
  *
@@ -82,7 +69,8 @@ add_filter( 'wp_nav_menu_primary_items','subscribers_menu' );
  *
  */
 function subscribers_menu_zh( $menu ) {
-    $submenu = '<li class"menu-item"><a href="/sample-page">通讯</a></li>';
+    $submenu = '<li class"menu-item"><a href="/zh/资讯">资讯</a></li>
+    <li class"menu-item"><a href="/zh/日历">日历</a></li>';
 
     if(is_user_logged_in()){
         $menu .= $submenu;
@@ -91,6 +79,18 @@ function subscribers_menu_zh( $menu ) {
     return $menu;
 }
 add_filter( 'wp_nav_menu_primaryzh_items','subscribers_menu_zh' );
+
+/**
+ * Add loginout onto menus
+ *
+ */
+function wpsites_loginout_menu_link( $menu ) {
+    $loginout = '<li class"menu-item">'.wp_loginout($_SERVER['REQUEST_URI'], false ).'</li>';
+    $menu .= $loginout;
+    return $menu;
+}
+add_filter( 'wp_nav_menu_primary_items','wpsites_loginout_menu_link' );
+add_filter( 'wp_nav_menu_primaryzh_items','wpsites_loginout_menu_link' );
 
 /**
  * Let subscriber view private pages
@@ -105,7 +105,7 @@ $subRole->add_cap( 'read_private_pages' );
  * When Subscribers log in, you don’t necessarily want them dumped onto the dashboard.
  */
 function loginRedirect( $redirect_to, $request_redirect_to, $user ) {
-    if ( is_a( $user, 'WP_User' ) && $user->has_cap( 'edit_posts' ) === false ) {
+    if ( is_a( $user, 'WP_User' ) ) {
         $newsletter = "/news";
         return $newsletter;
         //return get_bloginfo( 'siteurl');
