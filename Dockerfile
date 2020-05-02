@@ -16,6 +16,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY user.ini $PHP_INI_DIR/conf.d/
 
 ## Install S3 Fuse
+FROM ubuntu:18.04
 RUN apt-get update -y && \
     apt-get install -y build-essential libfuse-dev libcurl4-openssl-dev libxml2-dev pkg-config libssl-dev mime-support automake libtool wget tar git unzip
 RUN apt-get install lsb-release -y  && apt-get install zip -y && apt-get install vim -y
