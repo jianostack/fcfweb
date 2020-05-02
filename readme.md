@@ -10,10 +10,6 @@ Valet link composer generated wordpress directory
 `cd wordpress`
 `valet link`
 
-## WPML plugin
-
-https://wpml.org/account/downloads/
-
 ## Docker
 
 `docker volume create thefcfweb-wp`
