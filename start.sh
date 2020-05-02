@@ -1,2 +1,2 @@
 #!/bin/bash
-s3fs $S3_BUCKET_NAME $S3_MOUNT_DIRECTORY
+s3fs -o nonempty $S3_BUCKET_NAME $S3_MOUNT_DIRECTORY
