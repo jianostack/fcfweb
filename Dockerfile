@@ -43,8 +43,8 @@ RUN echo $AWS_ACCESS_KEY:$AWS_SECRET_ACCESS_KEY > /root/.passwd-s3fs && \
     chmod 600 /root/.passwd-s3fs
 
 ## Entry Point
-ADD start-script.sh /start-script.sh
-RUN chmod 755 /start-script.sh 
-CMD ["/start-script.sh"]
+ADD start.sh /start.sh
+RUN chmod 755 /start.sh 
+CMD ["/start.sh"]
 
 EXPOSE 80
