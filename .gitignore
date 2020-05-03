@@ -8,5 +8,5 @@ wp-content/themes/*
 !twentytwenty-child
 plugins
 uploads
-.env*
+.env
 languages
