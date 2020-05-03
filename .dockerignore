@@ -2,3 +2,5 @@ tmp
 .gitignore
 .env
 .git
+plugins
+uploads

@@ -6,14 +6,11 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "*",
-        "wpackagist-plugin/sermon-manager-for-wordpress":"*",
-        "wpackagist-plugin/advanced-custom-fields":"*",
-        "wpackagist-plugin/jetpack":"*",
-        "wpackagist-plugin/akismet":"*",
-        "wpackagist-plugin/pdf-embedder":"*",
-        "wpackagist-plugin/sendgrid-email-delivery-simplified":"*",
-        "wpackagist-plugin/polylang":"*",
-        "humanmade/s3-uploads": "^2.2"
+        "johnpbloch/wordpress": "^5.4",
+        "wpackagist-plugin/sermon-manager-for-wordpress":"^2.15",
+        "wpackagist-plugin/akismet":"^4.1",
+        "wpackagist-plugin/pdf-embedder":"^4.6",
+        "wpackagist-plugin/sendgrid-email-delivery-simplified":"^1.11",
+        "wpackagist-plugin/polylang":"^2.7"
     }
 }
