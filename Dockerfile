@@ -1,8 +1,12 @@
-FROM composer
+FROM composer as composer
 COPY composer.json .
 RUN composer install \
-    --no-interaction 
-WORKDIR /app/vendor/humanmade
+    --ignore-platform-reqs \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --prefer-dist
+WORKDIR /app/vendor/humanmade/s3-uploads
 RUN composer install
 RUN mkdir -p /app/uploads   
 
