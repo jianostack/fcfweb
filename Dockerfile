@@ -9,7 +9,7 @@ RUN composer install \
 RUN mkdir -p /app/uploads   
 
 
-
+FROM ubuntu:latest
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/hello-cron
 # Give execution rights on the cron job
