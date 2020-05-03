@@ -11,6 +11,7 @@
         "wpackagist-plugin/akismet":"^4.1",
         "wpackagist-plugin/pdf-embedder":"^4.6",
         "wpackagist-plugin/sendgrid-email-delivery-simplified":"^1.11",
-        "wpackagist-plugin/polylang":"^2.7"
+        "wpackagist-plugin/polylang":"^2.7",
+        "humanmade/s3-uploads": "^2.2"
     }
 }
