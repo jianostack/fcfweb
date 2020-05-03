@@ -13,6 +13,7 @@
         "wpackagist-plugin/akismet":"*",
         "wpackagist-plugin/pdf-embedder":"*",
         "wpackagist-plugin/sendgrid-email-delivery-simplified":"*",
-        "wpackagist-plugin/polylang":"*"
+        "wpackagist-plugin/polylang":"*",
+        "humanmade/s3-uploads": "^2.2"
     }
 }
