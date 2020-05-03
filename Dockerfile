@@ -1,5 +1,6 @@
 FROM composer as vendor
-COPY composer.json composer.json
+COPY composer.json .
+COPY composer.lock .
 RUN composer install \
     --ignore-platform-reqs \
     --no-interaction \
