@@ -8,12 +8,7 @@ RUN composer install \
     --prefer-dist
 RUN mkdir -p /app/uploads   
 
-FROM wordpress
-COPY --from=vendor --chown=www-data:www-data /app/vendor/wpackagist-plugin/ /var/www/html/wp-content/plugins/
-COPY --from=vendor --chown=www-data:www-data /app/uploads /var/www/html/wp-content/uploads
-COPY --chown=www-data:www-data . /var/www/html 
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-COPY user.ini $PHP_INI_DIR/conf.d/
+
 
 # Add crontab file in the cron directory
 ADD crontab /etc/cron.d/hello-cron
@@ -26,5 +21,12 @@ RUN apt-get update
 RUN apt-get -y install cron
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron.log
+
+FROM wordpress
+COPY --from=vendor --chown=www-data:www-data /app/vendor/wpackagist-plugin/ /var/www/html/wp-content/plugins/
+COPY --from=vendor --chown=www-data:www-data /app/uploads /var/www/html/wp-content/uploads
+COPY --chown=www-data:www-data . /var/www/html 
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+COPY user.ini $PHP_INI_DIR/conf.d/
 
 EXPOSE 80
