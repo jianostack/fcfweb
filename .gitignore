@@ -10,3 +10,5 @@ plugins
 uploads
 .env
 languages
+cmds
+wp-config.php
