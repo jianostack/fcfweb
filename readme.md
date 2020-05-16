@@ -1,11 +1,8 @@
-## wp-config
+# Fisherman of Christ website
 
-````
-define('FS_METHOD', 'direct');
-define( 'DISALLOW_FILE_EDIT', true );
-````
+Containerised Wordpress uploading to AWS S3.
 
-# Start up
+## Start up
 
 ```
 composer install
@@ -14,8 +11,5 @@ ln -s /full/source/path/wp-content /full/link/path/wordpress
 
 Valet link composer generated wordpress directory
 
+`cd wordpress`
 `valet link`
-
-## WPML
-
-https://wpml.org/account/downloads/

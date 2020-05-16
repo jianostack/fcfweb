@@ -1,16 +1,14 @@
 tmp
 wordpress
 vendor
-composer.lock
-
-# Hidden system files
 *.DS_Store
 *[Tt]humbs.db
 *.Trashes
-
-/wp-content/themes/*
-!enfisherman2013
-
-/wp-content/plugins
-
-/wp-content/uploads
+wp-content/themes/*
+!twentytwenty-child
+plugins
+uploads
+.env
+languages
+cmds
+wp-config.php
