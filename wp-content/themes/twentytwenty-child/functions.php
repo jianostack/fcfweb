@@ -106,9 +106,8 @@ $subRole->add_cap( 'read_private_pages' );
  */
 function loginRedirect( $redirect_to, $request_redirect_to, $user ) {
     if ( is_a( $user, 'WP_User' ) ) {
-        $newsletter = "/news";
-        return $newsletter;
-        //return get_bloginfo( 'siteurl');
+        $redirect_path = "/members";
+        return $redirect_path;
     }
     return $redirect_to;
 }
