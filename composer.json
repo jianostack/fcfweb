@@ -11,6 +11,7 @@
         "wpackagist-plugin/pdf-embedder":"^4.6",
         "wpackagist-plugin/sendgrid-email-delivery-simplified":"^1.11",
         "wpackagist-plugin/polylang":"^2.7",
+        "wpackagist-plugin/contact-form-7":"^5.1.9",
         "humanmade/s3-uploads": "^2.2"
     }
 }
