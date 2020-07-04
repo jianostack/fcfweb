@@ -53,7 +53,7 @@ add_filter( 'private_title_format', 'bl_remove_private_title' );
  *
  */
 function subscribers_menu( $menu ) {
-    $submenu = '<li class"menu-item"><a href="/news">News</a></li>
+    $submenu = '<li class"menu-item"><a href="/members">Members</a></li>
     <li class"menu-item"><a href="/calendar">Calendar</a></li>';
 
     if(is_user_logged_in()){
@@ -106,9 +106,8 @@ $subRole->add_cap( 'read_private_pages' );
  */
 function loginRedirect( $redirect_to, $request_redirect_to, $user ) {
     if ( is_a( $user, 'WP_User' ) ) {
-        $newsletter = "/news";
-        return $newsletter;
-        //return get_bloginfo( 'siteurl');
+        $redirect_path = "/members";
+        return $redirect_path;
     }
     return $redirect_to;
 }
