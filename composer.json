@@ -10,8 +10,8 @@
         "wpackagist-plugin/sermon-manager-for-wordpress":"^2.15",
         "wpackagist-plugin/akismet":"^4.1",
         "wpackagist-plugin/pdf-embedder":"^4.6",
-        "wpackagist-plugin/sendgrid-email-delivery-simplified":"^1.11",
         "wpackagist-plugin/polylang":"^2.7",
-        "humanmade/s3-uploads": "^2.2"
+        "humanmade/s3-uploads": "^2.2",
+        "wpackagist-plugin/wp-smtp": "^1.1"
     }
 }
