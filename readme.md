@@ -2,14 +2,18 @@
 
 Containerised Wordpress uploading to AWS S3.
 
-## Start up
+## Localhost
 
 ```
+brew install wp-cli
+composer global require laravel/valet
 composer install
-ln -s /full/source/path/wp-content /full/link/path/wordpress
+wp core download --skip-content
+cp wp-config-sample.php wp-config.php
+valet open
 ```
 
-Valet link composer generated wordpress directory
+## S3-upload plugin
 
-`cd wordpress`
-`valet link`
+https://github.com/humanmade/S3-Uploads#install-using-composer
+
