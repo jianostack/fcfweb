@@ -4,3 +4,13 @@
  Version:      1.0.0
  License:      GNU General Public License v2 or later
 */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.page-id-1380 {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.arial {
+    font-family:Arial, Helvetica, sans-serif !important;
+}
