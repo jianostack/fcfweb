@@ -19,3 +19,26 @@
     font-family:sans-serif !important;
 }
 
+@media ( min-width: 1220px ) {
+
+    h1,
+	.heading-size-1 {
+		font-size: 6.4rem;
+	}
+
+}
+
+h1,
+.heading-size-1 {
+	font-size: 3.4rem;
+}
+
+@media ( min-width: 700px ) {
+
+    h1,
+	.heading-size-1 {
+		font-size: 5.4rem;
+	}
+
+}
+
