@@ -42,3 +42,11 @@ h1,
 
 }
 
+.entry-content p,
+.entry-content ol,
+.entry-content ul,
+.entry-content dl,
+.entry-content dt {
+    font-family:Arial, Helvetica, sans-serif !important;
+}
+

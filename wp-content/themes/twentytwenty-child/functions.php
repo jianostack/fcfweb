@@ -85,8 +85,9 @@ add_filter( 'wp_nav_menu_primaryzh_items','subscribers_menu_zh' );
  *
  */
 function wpsites_loginout_menu_link( $menu ) {
-    $loginout = '<li class"menu-item">'.wp_loginout($_SERVER['REQUEST_URI'], false ).'</li>';
-    $menu .= $loginout;
+    $loginout = '<li class="menu-item">'.wp_loginout($_SERVER['REQUEST_URI'], false ).'</li>';
+    $updated_loginout = str_replace("Log", "Members log", $loginout);
+    $menu .= $updated_loginout;
     return $menu;
 }
 add_filter( 'wp_nav_menu_primary_items','wpsites_loginout_menu_link' );
