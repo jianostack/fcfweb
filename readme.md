@@ -6,11 +6,9 @@ Containerised Wordpress uploading to AWS S3.
 
 ```
 brew install wp-cli
-composer global require laravel/valet
 composer install
 wp core download --skip-content
 cp wp-config-sample.php wp-config.php
-valet open
 ```
 
 ## S3-upload plugin
