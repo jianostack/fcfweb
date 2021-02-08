@@ -19,6 +19,15 @@
     font-family:sans-serif !important;
 }
 
+.widget_text p,
+.widget_text ol,
+.widget_text ul,
+.widget_text dl,
+.widget_text dt,
+.widget-content .rssSummary {
+	font-family: NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
+}
+
 @media ( min-width: 1220px ) {
 
     h1,
@@ -47,11 +56,18 @@
 
 }
 
+.widget_text p,
+.widget_text ol,
+.widget_text ul,
+.widget_text dl,
+.widget_text dt,
+.widget-content .rssSummary,
 .entry-content p,
 .entry-content ol,
 .entry-content ul,
 .entry-content dl,
-.entry-content dt {
+.entry-content dt,
+.widget-content .rssSummary{
     font-family:Arial, Helvetica, sans-serif !important;
 }
 
