@@ -13,5 +13,10 @@
         "wpackagist-plugin/contact-form-7":"^5.1.9",
         "humanmade/s3-uploads": "^2.2",
         "wpackagist-plugin/wp-smtp": "^1.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "Acme": "src/"
+        }
     }
 }

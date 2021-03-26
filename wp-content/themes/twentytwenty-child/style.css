@@ -4,3 +4,70 @@
  Version:      1.0.0
  License:      GNU General Public License v2 or later
 */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.page-id-1380, .page-id-1380 h1, .page-id-1380 h2, .page-id-1380 h3, .page-id-1380 h4, .page-id-1380 h5, .page-id-1380 p {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.page-id-1382, .page-id-1382 h1, .page-id-1382 h2, .page-id-1382 h3, .page-id-1382 h4, .page-id-1382 h5, .page-id-1382 p {
+    font-family:Arial, Helvetica, sans-serif !important;
+}
+
+.page-id-1383, .page-id-1383 h1, .page-id-1383 h2, .page-id-1383 h3, .page-id-1383 h4, .page-id-1383 h5, .page-id-1383 p {
+    font-family:sans-serif !important;
+}
+
+.widget_text p,
+.widget_text ol,
+.widget_text ul,
+.widget_text dl,
+.widget_text dt,
+.widget-content .rssSummary {
+	font-family: NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
+}
+
+@media ( min-width: 1220px ) {
+
+    h1,
+	.heading-size-1 {
+		font-size: 6.4rem;
+	}
+
+}
+
+@media ( min-width: 700px ) {
+
+    h1,
+	.heading-size-1 {
+		font-size: 5rem;
+	}
+
+    h3,
+	.heading-size-3 {
+		font-size: 3.5rem;
+	}
+
+    .entry-content p,
+	.entry-content li {
+        font-size: 2.2rem;
+	}
+
+}
+
+.widget_text p,
+.widget_text ol,
+.widget_text ul,
+.widget_text dl,
+.widget_text dt,
+.widget-content .rssSummary,
+.entry-content p,
+.entry-content ol,
+.entry-content ul,
+.entry-content dl,
+.entry-content dt,
+.widget-content .rssSummary{
+    font-family:Arial, Helvetica, sans-serif !important;
+}
+
