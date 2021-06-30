@@ -8,6 +8,7 @@ Containerised Wordpress uploading to AWS S3.
 brew install wp-cli
 composer install
 wp core download --skip-content
+wp theme install twentytwentyone
 cp wp-config-sample.php wp-config.php
 ```
 
