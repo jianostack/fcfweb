@@ -21,7 +21,7 @@ add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 function istheemailgood($errors, $sanitized_user_login, $user_email) {
 
     global $wpdb;
-    $table_name = $wpdb->prefix."usersfcf";
+    $table_name = $wpdb->prefix."users_fcf";
     $results = $wpdb->get_row(
         "SELECT EMAIL
         FROM $table_name

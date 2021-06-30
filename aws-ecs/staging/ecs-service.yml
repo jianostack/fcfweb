@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+
+  fcfweb:
+    image: 298842265645.dkr.ecr.ap-southeast-1.amazonaws.com/fcfweb:staging
+    ports:
+      - "0:80"
+    env_file: .env_staging
+    logging:
+      driver: awslogs
+      options: 
+        awslogs-group: fcfweb-staging
+        awslogs-region: ap-southeast-1
+        awslogs-stream-prefix: ecs

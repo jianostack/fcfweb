@@ -1,0 +1,13 @@
+version: 1
+task_definition:
+  task_size:
+    mem_limit: 256
+run_params:
+  network_configuration:
+    awsvpc_configuration:
+      subnets:
+        - subnet-0decafac896b6449a
+        - subnet-0e920966e1ffdc87f
+      security_groups:
+        - sg-0d765210f08b3fa0e
+      assign_public_ip: ENABLED
