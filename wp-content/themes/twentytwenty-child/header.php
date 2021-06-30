@@ -21,7 +21,9 @@
 		<link rel="profile" href="https://gmpg.org/xfn/11">
 
 		<?php wp_head(); ?>
- 
+
+        <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101308679);</script>
+        <script async src="//static.getclicky.com/js"></script>
 	</head>
 
 	<body <?php body_class(); ?>>

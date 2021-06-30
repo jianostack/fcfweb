@@ -6,10 +6,9 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "^5.4",
-        "wpackagist-plugin/sermon-manager-for-wordpress":"^2.15",
+        "johnpbloch/wordpress": "^5.7",
         "wpackagist-plugin/pdf-embedder":"^4.6",
-        "wpackagist-plugin/polylang":"^2.7",
+        "wpackagist-plugin/polylang":"^3.0",
         "wpackagist-plugin/contact-form-7":"^5.1.9",
         "humanmade/s3-uploads": "^2.2",
         "wpackagist-plugin/wp-smtp": "^1.1"

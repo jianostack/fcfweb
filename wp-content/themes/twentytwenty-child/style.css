@@ -1,9 +1,9 @@
 /*
- Theme Name:   Twenty Twenty Child
- Template:     twentytwenty
- Version:      1.0.0
- License:      GNU General Public License v2 or later
-*/
+Theme Name:   Twenty Twenty Child
+Template:     twentytwenty
+Version:      1.0.0
+License:      GNU General Public License v2 or later
+ */
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
@@ -25,34 +25,34 @@
 .widget_text dl,
 .widget_text dt,
 .widget-content .rssSummary {
-	font-family: NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
+    font-family: NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
 }
 
 @media ( min-width: 1220px ) {
 
     h1,
-	.heading-size-1 {
-		font-size: 6.4rem;
-	}
+    .heading-size-1 {
+        font-size: 6.4rem;
+    }
 
 }
 
 @media ( min-width: 700px ) {
 
     h1,
-	.heading-size-1 {
-		font-size: 5rem;
-	}
+    .heading-size-1 {
+        font-size: 5rem;
+    }
 
     h3,
-	.heading-size-3 {
-		font-size: 3.5rem;
-	}
+    .heading-size-3 {
+        font-size: 3.5rem;
+    }
 
     .entry-content p,
-	.entry-content li {
+    .entry-content li {
         font-size: 2.2rem;
-	}
+    }
 
 }
 
@@ -71,3 +71,6 @@
     font-family:Arial, Helvetica, sans-serif !important;
 }
 
+.grecaptcha-badge { 
+    visibility: hidden; 
+}
