@@ -162,39 +162,12 @@ class Activator
           fullname tinytext NOT NULL,
           email tinytext NOT NULL,
           phone_number varchar(255) NOT NULL,
-          service ENUM('Breaking of Bread (8:30am)', 'Worship Service (9:15am)', 'Both Services') NOT NULL,
-          session ENUM('English','Chinese') NOT NULL,
+          service tinytext NOT NULL,
+          session tinytext NOT NULL,
           PRIMARY KEY  (id)
       );";
 
       require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
       dbDelta( $sql );
-
-      for ($i = 0; $i < 25; $i++) {
-        $wpdb->insert(
-            $table_name,
-            array(
-                'time' => date('Y-m-d H:i:s'),
-                'fullname' => 'Mr FCF',
-                'email' => 'me@fcf.com',
-                'phone_number' => '12345678',
-                'service' => 'Breaking of Bread (8:30am)',
-                'session'  => 'English'
-            ));
-      }
-
-      for ($i = 0; $i < 25; $i++) {
-        $wpdb->insert(
-            $table_name,
-            array(
-                'time' => date('Y-m-d H:i:s'),
-                'fullname' => 'Mr Robot',
-                'email' => 'me@mrrobot.com',
-                'phone_number' => '87654321',
-                'service' => 'Both Services',
-                'session'  => 'Chinese'
-            ));
-      }
-
   }
 }

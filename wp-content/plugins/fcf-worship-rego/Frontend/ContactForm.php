@@ -130,24 +130,24 @@ class ContactForm
                     <form action="' . esc_url($_SERVER['REQUEST_URI']) . '" method="post" id="worship-rego">
                         <p>' . wp_nonce_field('getFormHtml', 'getFormHtml_nonce', true, false) . '</p>
                         <p>
-                            <label for="fullname">' . esc_html__('Name', 'worship-rego') . '&nbsp;<span class="required">*</span></label>
+                            <label for="fullname">' . pll__('Name') . '&nbsp;<span class="required">*</span></label>
                             <input type="text" id="fullname" name="fullname" required />
                         </p>
                         <p>
-                            <label for="email">' . esc_html__('E-mail', 'worship-rego') . '&nbsp;<span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required />
+                            <label for="email">' . pll__('Email') . '&nbsp;<span class="required"></span></label>
+                            <input type="email" id="email" name="email" />
                         </p>
                         <p>
-                            <label for="phone_number">' . esc_html__('Mobile Phone Number', 'worship-rego') . '&nbsp;<span class="required">*</span></label>
+                            <label for="phone_number">' . pll__('Mobile Phone Number') . '&nbsp;<span class="required"></span></label>
                             <input type="number" id="phone_number" name="phone_number" />
                         </p>
                         <p>
-                            <label for="service">' . esc_html__('Which service will you be attending?', 'worship-rego') . '&nbsp;<span class="required">*</span></label>
+                            <label for="service">' . pll__('Which service will you be attending?') . '&nbsp;<span class="required">*</span></label>
                             <select name="service" id="service-select" required>
-                              <option value=""> Please choose one </option>
-                              <option value="Breaking of Bread (8:30am)">Breaking of Bread (8:30am)</option>
-                              <option value="Worship Service (9:15am)">Worship Service (9:15am)</option>
-                              <option value="Both Services">Both Services</option>
+                              <option value="">' . pll__('Please choose 1') . '</option>
+                              <option value="Breaking of Bread">' . pll__('Breaking of Bread') . '</option>
+                              <option value="Worship Service">' . pll__('Worship Service') . '</option>
+                              <option value="Both Services">' . pll__('Both Services') . '</option>
                           </select>
                         </p>
                         <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-rego') . '"/></p>
@@ -176,22 +176,16 @@ class ContactForm
                 $phone_number = sanitize_text_field($_POST["phone_number"]);
                 $service = sanitize_text_field($_POST["service"]);
                 $session = 'English';
-
                 $table_name = $wpdb->prefix . 'worship_registration';
 
-                // Process the data.
-                // var_dump($email, $fullname, $phone_number,$service);
-                $query_database = $wpdb->get_row( "
+                $is_duplicate = $wpdb->get_row( "
                   SELECT * FROM $table_name
-                  WHERE fullname = '$fullname' OR email = '$email' OR phone_number = $phone_number
+                  WHERE fullname = '$fullname'
                   " );
 
-                if ($query_database) {
-                  exit(esc_html__('Form submission failed. Please try again.', 'worship-rego'));
+                if ( isset($fullname) && is_email($email) && isset($phone_number) && !isset($is_duplicate) ) {
 
-                }
-
-                $inserted = $wpdb->insert(
+                  $inserted = $wpdb->insert(
                   $table_name,
                   array(
                       'time' => date('Y-m-d H:i:s'),
@@ -200,19 +194,24 @@ class ContactForm
                       'phone_number' => $phone_number,
                       'service' => $service,
                       'session' => $session
-                  )
-                );
+                  ));
+                  if ( $inserted ) {
+                    echo("<script> $('#worship-rego')[0].reset();</script>");
+                    echo "<p>Thank you for registering. See you on Sunday 😄</p>";
+                  } else {
+                    echo "<p>Form submission failed. Please try again 😔</p>";
+                  }
 
-                if ($inserted) {
-                  echo("<script>location.href = '/thank-you'</script>");
                 } else {
-                  exit(esc_html__('Form submission failed. Please try again.', 'worship-rego'));
+
+                  echo "<p>Form submission failed. Please try again 😔</p>";
+
                 }
 
-            }
-            else
-            {
-                exit(esc_html__('Failed security check.', 'worship-rego'));
+            } else {
+
+              exit(esc_html__('Failed security check.', 'worship-rego'));
+
             }
         }
     }

@@ -113,3 +113,21 @@ function loginRedirect( $redirect_to, $request_redirect_to, $user ) {
     return $redirect_to;
 }
 add_filter( 'login_redirect', 'loginRedirect', 10, 3 );
+
+
+/**
+ * Polylang string translations
+ *
+ *
+ */
+if ( function_exists('pll_register_string') ) {
+    pll_register_string('Test', 'Test Translation');
+    pll_register_string('worship-name', 'Name');
+    pll_register_string('worship-email', 'Email');
+    pll_register_string('worship-mobile', 'Mobile Phone Number');
+    pll_register_string('worship-service', 'Which service will you be attending?');
+    pll_register_string('worship-choose', 'Please choose 1');
+    pll_register_string('worship-breaking', 'Breaking of Bread');
+    pll_register_string('worship-worship', 'Worship Service');
+    pll_register_string('worship-both', 'Both Services');
+}
