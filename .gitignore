@@ -6,6 +6,7 @@ vendor
 wp-content/themes/*
 !twentytwenty-child
 plugins
+!fcf-worship-rego
 uploads
 .env
 .env_*
