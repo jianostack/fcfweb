@@ -23,7 +23,7 @@ class Example_List_Table extends WP_List_Table
         $data = $this->table_data();
         usort( $data, array( &$this, 'sort_data' ) );
 
-        $perPage = 25;
+        $perPage = 10;
         $currentPage = $this->get_pagenum();
         $totalItems = count($data);
 
@@ -47,6 +47,7 @@ class Example_List_Table extends WP_List_Table
     {
         $columns = array(
             'id' => 'ID',
+            'time' => 'time',
             'fullname' => 'Full Name',
             'email' => 'Email',
             'phone_number' => 'Phone Number',
@@ -74,7 +75,11 @@ class Example_List_Table extends WP_List_Table
      */
     public function get_sortable_columns()
     {
-        return array('session' => array('session', false));
+        return array(
+          'session' => array('session', false),
+          'id' => array('id', false),
+          'time' => array('time', false)
+        );
     }
 
     /**
@@ -103,6 +108,7 @@ class Example_List_Table extends WP_List_Table
     {
         switch( $column_name ) {
             case 'id':
+            case 'time':
             case 'fullname':
             case 'email':
             case 'phone_number':

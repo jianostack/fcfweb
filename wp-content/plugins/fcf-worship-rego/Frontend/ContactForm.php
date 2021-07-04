@@ -175,7 +175,12 @@ class ContactForm
                 $email = sanitize_email($_POST["email"]);
                 $phone_number = sanitize_text_field($_POST["phone_number"]);
                 $service = sanitize_text_field($_POST["service"]);
-                $session = 'English';
+                if ( pll_current_language()=='en' ) {
+                  $session = 'English';
+                } else {
+                  $session = 'Chinese';
+                }
+
                 $table_name = $wpdb->prefix . 'worship_registration';
 
                 $is_duplicate = $wpdb->get_row( "
@@ -183,7 +188,7 @@ class ContactForm
                   WHERE fullname = '$fullname'
                   " );
 
-                if ( isset($fullname) && is_email($email) && isset($phone_number) && !isset($is_duplicate) ) {
+                if ( isset($fullname) && !isset($is_duplicate) ) {
 
                   $inserted = $wpdb->insert(
                   $table_name,
