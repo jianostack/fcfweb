@@ -5,7 +5,7 @@ vendor
 *.Trashes
 wp-content/themes/*
 !twentytwenty-child
-plugins
+wp-content/plugins/*
 !fcf-worship-rego
 uploads
 .env
