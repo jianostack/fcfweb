@@ -6,8 +6,12 @@ env:
     REPOSITORY_URI: $REPOSITORY_URI
     DOCKER_USER: $DOCKER_USER
     DOCKER_PASS: $DOCKER_PASS
+    COMPOSER_CACHE_DIR: .cache/composer
 
 phases:
+  install:
+    commands:
+      - mkdir -p .cache/composer
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -32,4 +36,6 @@ phases:
       - printf '[{"name":"fcfweb","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
-
+cache:
+  paths:
+    - .cache/composer/**/*
