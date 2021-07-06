@@ -7,7 +7,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-class Example_List_Table extends WP_List_Table
+class Admin_List_Table extends WP_List_Table
 {
     /**
      * Prepare the items for the table to process
@@ -78,7 +78,8 @@ class Example_List_Table extends WP_List_Table
         return array(
           'session' => array('session', false),
           'id' => array('id', false),
-          'time' => array('time', false)
+          'time' => array('time', false),
+          'email' => array('email', false)
         );
     }
 

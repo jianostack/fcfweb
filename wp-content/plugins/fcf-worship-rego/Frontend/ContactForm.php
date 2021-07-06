@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace WorshipRego\Frontend;
 
 // If this file is called directly, abort.
@@ -126,33 +124,47 @@ class ContactForm
     private function getFormHtml(): string
     {
         $html = '<div>
-                    <p id="capitalized-subject"></p>
-                    <form action="' . esc_url($_SERVER['REQUEST_URI']) . '" method="post" id="worship-rego">
-                        <p>' . wp_nonce_field('getFormHtml', 'getFormHtml_nonce', true, false) . '</p>
-                        <p>
-                            <label for="fullname">' . pll__('Name') . '&nbsp;<span class="required">*</span></label>
-                            <input type="text" id="fullname" name="fullname" required />
-                        </p>
-                        <p>
-                            <label for="email">' . pll__('Email') . '&nbsp;<span class="required"></span></label>
-                            <input type="email" id="email" name="email" />
-                        </p>
-                        <p>
-                            <label for="phone_number">' . pll__('Mobile Phone Number') . '&nbsp;<span class="required"></span></label>
-                            <input type="number" id="phone_number" name="phone_number" />
-                        </p>
-                        <p>
-                            <label for="service">' . pll__('Which service will you be attending?') . '&nbsp;<span class="required">*</span></label>
-                            <select name="service" id="service-select" required>
-                              <option value="">' . pll__('Please choose 1') . '</option>
-                              <option value="Breaking of Bread">' . pll__('Breaking of Bread') . '</option>
-                              <option value="Worship Service">' . pll__('Worship Service') . '</option>
-                              <option value="Both Services">' . pll__('Both Services') . '</option>
-                          </select>
-                        </p>
-                        <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-rego') . '"/></p>
-                    </form>
-                </div>';
+            <p id="capitalized-subject"></p>
+            <form action="' . esc_url($_SERVER['REQUEST_URI']) . '" method="post" id="worship-rego">
+            <input type="hidden" name="token" id="token" />
+            <input type="hidden" name="action" id="action" />
+            <p>' . wp_nonce_field('getFormHtml', 'getFormHtml_nonce', true, false) . '</p>
+            <p>
+            <label for="fullname">' . pll__('Name') . '&nbsp;<span class="required">*</span></label>
+            <input type="text" id="fullname" name="fullname" required />
+            </p>
+            <p>
+            <label for="email">' . pll__('Email') . '&nbsp;<span class="required"></span></label>
+            <input type="email" id="email" name="email" />
+            </p>
+            <p>
+            <label for="phone_number">' . pll__('Mobile Phone Number') . '&nbsp;<span class="required"></span></label>
+            <input type="number" id="phone_number" name="phone_number" />
+            </p>
+            <p>
+            <label for="service">' . pll__('Which service will you be attending?') . '&nbsp;<span class="required">*</span></label>
+            <select name="service" id="service-select" required>
+            <option value="">' . pll__('Please choose 1') . '</option>
+            <option value="Breaking of Bread">' . pll__('Breaking of Bread') . '</option>
+            <option value="Worship Service">' . pll__('Worship Service') . '</option>
+            <option value="Both Services">' . pll__('Both Services') . '</option>
+            </select>
+            </p>
+            <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-rego') . '"/></p>
+            </form>
+            <script type="text/javascript">
+$(document).ready(function(){
+    setInterval(function(){
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K', {action: 'application_form'}).then(function(token) {
+                $('#token').val(token);
+                $('#action').val('application_form');
+    });
+});
+            }, 3000);
+         });
+      </script>
+            </div>';
 
         return $html;
     }
@@ -168,6 +180,25 @@ class ContactForm
         // Check the Submit button is clicked
         if(isset($_POST['form-submitted']))
         {
+
+$token  = $_POST['token'];
+    $action = $_POST['action'];
+            $curlData = array(
+        'secret' => '6LcNW8sZAAAAALhdRufDj4HojxyNMgqPVB0By78u',
+        'response' => $token
+    );
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($curlData));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $curlResponse = curl_exec($ch);
+
+    $captchaResponse = json_decode($curlResponse, true);
+
+  
+
             // Verify Nonce
             if (wp_verify_nonce($_POST['getFormHtml_nonce'], 'getFormHtml') !== false)
             {
@@ -176,9 +207,9 @@ class ContactForm
                 $phone_number = sanitize_text_field($_POST["phone_number"]);
                 $service = sanitize_text_field($_POST["service"]);
                 if ( pll_current_language()=='en' ) {
-                  $session = 'English';
+                    $session = 'English';
                 } else {
-                  $session = 'Chinese';
+                    $session = 'Chinese';
                 }
 
                 $table_name = $wpdb->prefix . 'worship_registration';
@@ -188,7 +219,8 @@ class ContactForm
                   WHERE fullname = '$fullname'
                   " );
 
-                if ( isset($fullname) && !isset($is_duplicate) ) {
+//recaptcha and duplicate validation
+                if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
 
                   $inserted = $wpdb->insert(
                   $table_name,

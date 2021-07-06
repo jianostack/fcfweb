@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace WorshipRego\Admin;
 
 use WorshipRego\Admin\SettingsBase;
-use WorshipRego\Admin\Example_List_Table;
+use WorshipRego\Admin\Admin_List_Table;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -196,12 +196,12 @@ class Settings extends SettingsBase
         </div>
         <?php
 
-        $exampleListTable = new Example_List_Table();
-        $exampleListTable->prepare_items();
+        $registration_list_table = new Admin_List_Table();
+        $registration_list_table->prepare_items();
         ?>
             <div class="wrap">
                 <div id="icon-users" class="icon32"></div>
-                <?php $exampleListTable->display(); ?>
+                <?php $registration_list_table->display(); ?>
             </div>
         <?php
 
