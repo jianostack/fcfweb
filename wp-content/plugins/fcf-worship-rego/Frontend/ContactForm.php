@@ -152,13 +152,14 @@ class ContactForm
             </p>
             <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-rego') . '"/></p>
             </form>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K"></script>
             <script type="text/javascript">
-$(document).ready(function(){
+jQuery(document).ready(function(){
     setInterval(function(){
         grecaptcha.ready(function() {
-            grecaptcha.execute('6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K', {action: 'application_form'}).then(function(token) {
-                $('#token').val(token);
-                $('#action').val('application_form');
+            grecaptcha.execute("6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K", {action: "application_form"}).then(function(token) {
+                $("#token").val(token);
+                $("#action").val("application_form");
     });
 });
             }, 3000);
