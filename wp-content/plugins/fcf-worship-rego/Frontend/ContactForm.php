@@ -152,19 +152,19 @@ class ContactForm
             </p>
             <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-rego') . '"/></p>
             </form>
-<script src="https://www.google.com/recaptcha/api.js?render=6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K"></script>
+            <script src="https://www.google.com/recaptcha/api.js?render=6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K"></script>
             <script type="text/javascript">
-jQuery(document).ready(function(){
-    setInterval(function(){
-        grecaptcha.ready(function() {
+            jQuery(document).ready(function(){
+            setInterval(function(){
+            grecaptcha.ready(function() {
             grecaptcha.execute("6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K", {action: "application_form"}).then(function(token) {
-                jQuery("#token").val(token);
-                jQuery("#action").val("application_form");
-    });
-});
+            jQuery("#token").val(token);
+            jQuery("#action").val("application_form");
+            });
+            });
             }, 3000);
-         });
-      </script>
+            });
+            </script>
             </div>';
 
         return $html;
@@ -182,23 +182,22 @@ jQuery(document).ready(function(){
         if(isset($_POST['form-submitted']))
         {
 
-$token  = $_POST['token'];
-    $action = $_POST['action'];
+            $token  = $_POST['token'];
+            $action = $_POST['action'];
+
             $curlData = array(
-        'secret' => '6LcNW8sZAAAAALhdRufDj4HojxyNMgqPVB0By78u',
-        'response' => $token
-    );
+                'secret' => '6LcNW8sZAAAAALhdRufDj4HojxyNMgqPVB0By78u',
+                'response' => $token
+            );
 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($curlData));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $curlResponse = curl_exec($ch);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($curlData));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $curlResponse = curl_exec($ch);
 
-    $captchaResponse = json_decode($curlResponse, true);
-
-  
+            $captchaResponse = json_decode($curlResponse, true);
 
             // Verify Nonce
             if (wp_verify_nonce($_POST['getFormHtml_nonce'], 'getFormHtml') !== false)
@@ -220,7 +219,7 @@ $token  = $_POST['token'];
                   WHERE fullname = '$fullname'
                   " );
 
-//recaptcha and duplicate validation
+                //recaptcha and duplicate validation
                 if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
 
                   $inserted = $wpdb->insert(
@@ -234,7 +233,7 @@ $token  = $_POST['token'];
                       'session' => $session
                   ));
                   if ( $inserted ) {
-                    echo("<script> $('#worship-rego')[0].reset();</script>");
+                    echo("<script> jQuery('#worship-rego')[0].reset();</script>");
                     echo "<p>Thank you for registering. See you on Sunday 😄</p>";
                   } else {
                     echo "<p>Form submission failed. Please try again 😔</p>";
