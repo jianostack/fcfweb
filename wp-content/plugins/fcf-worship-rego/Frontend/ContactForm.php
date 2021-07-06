@@ -158,8 +158,8 @@ jQuery(document).ready(function(){
     setInterval(function(){
         grecaptcha.ready(function() {
             grecaptcha.execute("6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K", {action: "application_form"}).then(function(token) {
-                $("#token").val(token);
-                $("#action").val("application_form");
+                jQuery("#token").val(token);
+                jQuery("#action").val("application_form");
     });
 });
             }, 3000);
