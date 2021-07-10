@@ -159,11 +159,11 @@ class Activator
       $sql = "CREATE TABLE $table_name (
           id mediumint(9) NOT NULL AUTO_INCREMENT,
           time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-          fullname tinytext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-          email tinytext NOT NULL,
-          phone_number varchar(255) NOT NULL,
-          service tinytext NOT NULL,
-          session tinytext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+          fullname tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+          email tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+          phone_number varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci  NOT NULL,
+          service tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_civ NOT NULL,
+          session tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
           is_del boolean DEFAULT false NOT NULL,
           PRIMARY KEY (id)
       );";
