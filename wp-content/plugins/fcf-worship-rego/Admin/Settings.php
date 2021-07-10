@@ -1,11 +1,11 @@
 <?php
 
-declare(strict_types=1);
 
 namespace WorshipRego\Admin;
 
 use WorshipRego\Admin\SettingsBase;
 use WorshipRego\Admin\Admin_List_Table;
+use League\Csv\Writer;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -158,6 +158,15 @@ class Settings extends SettingsBase
             'dashicons-smiley',                         // Icon
             81                                          // Position: The position in the menu order this item should appear.
         );
+
+        add_submenu_page(
+            $this->menuSlug,
+            'worship-export',
+            'Export',
+            'manage_options',
+            'worship-export',
+            array($this, 'renderSettingsPageContentExport')  
+        );
     }
 
     /**
@@ -205,13 +214,48 @@ class Settings extends SettingsBase
             </div>
         <?php
 
-
-
     }
 
+    /**
+     * Renders the Settings page to display for the Settings menu defined above.
+     *
+     * @since   1.0.0
+     * @param   activeTab       The name of the active tab.
+     */
+    public function renderSettingsPageContentExport(string $activeTab = ''): void
+    {
 
+        // include the Composer autoload file
+require BASE_PATH . 'vendor/autoload.php';
 
-#region GENERAL OPTIONS
+global $wpdb;
+        $table_name = $wpdb->prefix . 'worship_registration';
+            $sth = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
+
+                //because we don't want to duplicate the data for each row
+        // PDO::FETCH_NUM could also have been used
+        //$sth->setFetchMode(PDO::FETCH_ASSOC);
+        //$sth->execute();
+
+        //we create the CSV into memory
+        $csv = Writer::createFromFileObject(new SplTempFileObject());
+
+        //we insert the CSV header
+        $csv->insertOne(['firstname', 'lastname', 'email']);
+
+        // The PDOStatement Object implements the Traversable Interface
+        // that's why Writer::insertAll can directly insert
+        // the data into the CSV
+        $csv->insertAll($sth);
+
+        // Because you are providing the filename you don't have to
+        // set the HTTP headers Writer::output can
+        // directly set them for you
+        // The file is downloadable
+        $csv->output('users.csv');
+        die;
+    }
+
 
     /**
      * Initializes the General Options by registering the Sections, Fields, and Settings.
@@ -289,10 +333,6 @@ class Settings extends SettingsBase
         $this->generalOptions = $this->getGeneralOptions();
         return (bool)$this->generalOptions[$this->debugId];
     }
-
-#endregion
-
-
 
 }
 
