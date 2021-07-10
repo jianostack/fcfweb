@@ -236,7 +236,7 @@ class ContactForm
                   ));
                   if ( $inserted ) {
                     echo("<script> jQuery('#worship-rego')[0].reset();</script>");
-                    echo "<p>Thank you for registering. See you on Sunday 😄</p>";
+                    echo "<p>".pll__('Thank you')."</p>";
                   } else {
                     echo "<p>Form submission failed. Please try again 😔</p>";
                   }

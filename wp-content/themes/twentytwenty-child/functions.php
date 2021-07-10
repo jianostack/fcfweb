@@ -130,4 +130,5 @@ if ( function_exists('pll_register_string') ) {
     pll_register_string('worship-breaking', 'Breaking of Bread');
     pll_register_string('worship-worship', 'Worship Service');
     pll_register_string('worship-both', 'Both Services');
+    pll_register_string('worship-thankyou', 'Thank you');
 }
