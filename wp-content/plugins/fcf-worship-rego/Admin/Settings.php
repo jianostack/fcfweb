@@ -3,10 +3,8 @@
 
 namespace WorshipRego\Admin;
 
-require ABSPATH . '/vendor/autoload.php';
 use WorshipRego\Admin\SettingsBase;
 use WorshipRego\Admin\Admin_List_Table;
-use League\Csv\Writer;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -160,14 +158,7 @@ class Settings extends SettingsBase
             81                                          // Position: The position in the menu order this item should appear.
         );
 
-        add_submenu_page(
-            $this->menuSlug,
-            'worship-export',
-            'Export',
-            'manage_options',
-            'worship-export',
-            array($this, 'renderSettingsPageContentExport')  
-        );
+        
     }
 
     /**
@@ -214,54 +205,6 @@ class Settings extends SettingsBase
                 <?php $registration_list_table->display(); ?>
             </div>
         <?php
-
-    }
-
-    /**
-     * Renders the Settings page to display for the Settings menu defined above.
-     *
-     * @since   1.0.0
-     * @param   activeTab       The name of the active tab.
-     */
-    public function renderSettingsPageContentExport(string $activeTab = ''): void
-    {
-
-
-global $wpdb;
-        $table_name = $wpdb->prefix . 'worship_registration';
-            $sth = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
-
-                //because we don't want to duplicate the data for each row
-        // PDO::FETCH_NUM could also have been used
-        //$sth->setFetchMode(PDO::FETCH_ASSOC);
-        //$sth->execute();
-
-        //we create the CSV into memory
-        $csv = Writer::createFromFileObject(new \SplTempFileObject());
-
-        //we insert the CSV header
-        $csv->insertOne(['firstname', 'lastname', 'email']);
-
-        // The PDOStatement Object implements the Traversable Interface
-        // that's why Writer::insertAll can directly insert
-        // the data into the CSV
-        $csv->insertAll($sth);
-
-                //header('Content-Type: text/csv; charset=UTF-8');
-//header('Content-Description: File Transfer');
-//header('Content-Disposition: attachment; filename="users.csv"');
-
-        submit_button('Download CSV','primary','worship-export');
-
-        // Because you are providing the filename you don't have to
-        // set the HTTP headers Writer::output can
-        // directly set them for you
-        // The file is downloadable
-        //$csv->output('users.csv');
-        die;
-
-//$reader = Reader::createFromPath('file.csv', 'r');
-//$reader->output();
 
     }
 
