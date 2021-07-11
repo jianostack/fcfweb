@@ -217,6 +217,7 @@ class ContactForm
                 $is_duplicate = $wpdb->get_row( "
                   SELECT * FROM $table_name
                   WHERE fullname = '$fullname'
+                  AND is_del = 0
                   " );
 
                 // localhost validation . Also not working for Chinese 
