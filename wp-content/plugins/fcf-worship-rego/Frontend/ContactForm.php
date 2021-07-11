@@ -43,10 +43,6 @@ class ContactForm
      */
     public function initializeHooks(bool $isAdmin): void
     {
-        // 'wp_ajax_' hook needs to be run on frontend and admin area too.
-        add_action('wp_ajax_capitalizeText', array($this, 'capitalizeText'), 10);
-
-        // Frontend
         if (!$isAdmin)
         {
             add_shortcode('add_worship_registration_form', array($this, 'formShortcode'));
@@ -83,9 +79,30 @@ class ContactForm
             // exit('wp_add_inline_script() failed. Inlined script: ' . $script);
         }
 
-        // Show the Form
-        $html = $this->getFormHtml();
-        $this->processFormData();
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'worship_registration';
+
+        if ( pll_current_language()=='en' ) {
+            $session = 'English';
+        } else {
+            $session = 'Chinese';
+        }
+
+
+        $worshipers = $wpdb->get_row( "
+                  SELECT COUNT(*) as count FROM $table_name
+                  WHERE session = '$session'
+                  AND is_del = 0" );
+
+        if ( $session == 'English' && $worshipers->count > 55 ) {
+            $html = '<p>Registration is closed.</p>';
+        } else if ( $session == 'Chinese' && $worshipers->count > 55) {
+            $html = '<p>Registration is closed.</p>';
+        } else {
+            $html = $this->getFormHtml();
+            $this->processFormData();
+        }
 
         return $html;
     }
@@ -239,12 +256,12 @@ class ContactForm
                     echo("<script> jQuery('#worship-rego')[0].reset();</script>");
                     echo "<p>".pll__('Thank you')."</p>";
                   } else {
-                    echo "<p>Form submission failed. Please try again 😔</p>";
+                    echo "<p>Form submission failed.</p>";
                   }
 
                 } else {
 
-                  echo "<p>Form submission failed. Please try again 😔</p>";
+                  echo "<p>Form submission failed.</p>";
 
                 }
 
