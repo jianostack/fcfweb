@@ -159,11 +159,11 @@ class Activator
       $sql = "CREATE TABLE $table_name (
           id mediumint(9) NOT NULL AUTO_INCREMENT,
           time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-          fullname tinytext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-          email tinytext NOT NULL,
-          phone_number varchar(255) NOT NULL,
-          service tinytext NOT NULL,
-          session tinytext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+          fullname tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+          email tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+          phone_number varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci  NOT NULL,
+          service tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+          session tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
           is_del boolean DEFAULT false NOT NULL,
           PRIMARY KEY (id)
       );";
@@ -196,5 +196,31 @@ class Activator
       //           'session'  => 'Chinese'
       //       ));
       // }
-  }
+      
+
+      // wp cron to delete the previous week registrations
+      if ( ! wp_next_scheduled( 'fcf-check-registrations' ) ) {
+          wp_schedule_event( time(), 'five_seconds', 'fcf-check-registrations' );
+      }
+
+      // Add a callback
+      add_action( 'fcf-check-registrations', 'RemoveOldRegistrations' );
+      /**
+       * Check the database for the previous weeks registration and soft delete
+       */
+      function RemoveOldRegistrations() {
+          syslog( LOG_INFO,'Called' );
+      }
+
+
+      add_filter( 'cron_schedules', 'example_add_cron_interval' );
+      function example_add_cron_interval( $schedules ) {
+          $schedules['five_seconds'] = array(
+              'interval' => 5,
+              'display'  => esc_html__( 'Every Five Seconds' ), );
+          return $schedules;
+      }
+    }
+
+    
 }

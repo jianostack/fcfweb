@@ -67,7 +67,11 @@ class Deactivator
 	 * if the plugin is deactivated network wide.
 	 */
 	public static function onDeactivation()
-	{
+    {
 
+        // clear wp cron hook
+        wp_clear_scheduled_hook( 'fcf-check-registration' );
+        $timestamp = wp_next_scheduled( 'fcf-check-registration' );
+        wp_unschedule_event( $timestamp, 'fcf-check-registration' );
 	}
 }
