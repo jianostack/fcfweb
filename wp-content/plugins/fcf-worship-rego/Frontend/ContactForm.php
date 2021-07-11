@@ -89,7 +89,6 @@ class ContactForm
             $session = 'Chinese';
         }
 
-
         $worshipers = $wpdb->get_row( "
                   SELECT COUNT(*) as count FROM $table_name
                   WHERE session = '$session'
@@ -151,7 +150,7 @@ class ContactForm
             <input type="text" id="fullname" name="fullname" required />
             </p>
             <p>
-            <label for="email">' . pll__('Email') . '&nbsp;<span class="required"></span></label>
+            <label for="email">' . pll__('Email') . '&nbsp;<span class="required">*</span></label>
             <input type="email" id="email" name="email" />
             </p>
             <p>
@@ -238,7 +237,7 @@ class ContactForm
                   " );
 
                 // localhost validation . Also not working for Chinese 
-                if ( isset($fullname) && !isset($is_duplicate) ) {
+                if ( isset($fullname) && isset($email) && !isset($is_duplicate) ) {
                 // staging and production recaptcha and duplicate validation
                 // if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
 
