@@ -43,10 +43,6 @@ class ContactForm
      */
     public function initializeHooks(bool $isAdmin): void
     {
-        // 'wp_ajax_' hook needs to be run on frontend and admin area too.
-        add_action('wp_ajax_capitalizeText', array($this, 'capitalizeText'), 10);
-
-        // Frontend
         if (!$isAdmin)
         {
             add_shortcode('add_worship_registration_form', array($this, 'formShortcode'));
@@ -83,9 +79,29 @@ class ContactForm
             // exit('wp_add_inline_script() failed. Inlined script: ' . $script);
         }
 
-        // Show the Form
-        $html = $this->getFormHtml();
-        $this->processFormData();
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'worship_registration';
+
+        if ( pll_current_language()=='en' ) {
+            $session = 'English';
+        } else {
+            $session = 'Chinese';
+        }
+
+        $worshipers = $wpdb->get_row( "
+                  SELECT COUNT(*) as count FROM $table_name
+                  WHERE session = '$session'
+                  AND is_del = 0" );
+
+        if ( $session == 'English' && $worshipers->count > 55 ) {
+            $html = '<p>Registration is closed.</p>';
+        } else if ( $session == 'Chinese' && $worshipers->count > 55) {
+            $html = '<p>Registration is closed.</p>';
+        } else {
+            $html = $this->getFormHtml();
+            $this->processFormData();
+        }
 
         return $html;
     }
@@ -134,8 +150,8 @@ class ContactForm
             <input type="text" id="fullname" name="fullname" required />
             </p>
             <p>
-            <label for="email">' . pll__('Email') . '&nbsp;<span class="required"></span></label>
-            <input type="email" id="email" name="email" />
+            <label for="email">' . pll__('Email') . '&nbsp;<span class="required">*</span></label>
+            <input type="email" id="email" name="email" required />
             </p>
             <p>
             <label for="phone_number">' . pll__('Mobile Phone Number') . '&nbsp;<span class="required"></span></label>
@@ -217,10 +233,11 @@ class ContactForm
                 $is_duplicate = $wpdb->get_row( "
                   SELECT * FROM $table_name
                   WHERE fullname = '$fullname'
+                  AND is_del = 0
                   " );
 
                 // localhost validation . Also not working for Chinese 
-                if ( isset($fullname) && !isset($is_duplicate) ) {
+                if ( isset($fullname) && isset($email) && !isset($is_duplicate) ) {
                 // staging and production recaptcha and duplicate validation
                 // if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
 
@@ -238,12 +255,12 @@ class ContactForm
                     echo("<script> jQuery('#worship-rego')[0].reset();</script>");
                     echo "<p>".pll__('Thank you')."</p>";
                   } else {
-                    echo "<p>Form submission failed. Please try again 😔</p>";
+                    echo "<p>Form submission failed.</p>";
                   }
 
                 } else {
 
-                  echo "<p>Form submission failed. Please try again 😔</p>";
+                  echo "<p>Form submission failed.</p>";
 
                 }
 

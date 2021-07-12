@@ -92,7 +92,7 @@ class Admin_List_Table extends WP_List_Table
     {
         global $wpdb;
         $table_name = $wpdb->prefix . 'worship_registration';
-        $data = $wpdb->get_results("SELECT * FROM $table_name" WHERE is_del = 0, ARRAY_A);
+        $data = $wpdb->get_results("SELECT * FROM $table_name WHERE is_del = 0", ARRAY_A);
 
         return $data;
     }
