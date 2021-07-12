@@ -150,8 +150,8 @@ class ContactForm
             <input type="text" id="fullname" name="fullname" required />
             </p>
             <p>
-            <label for="email">' . pll__('Email') . '&nbsp;<span class="required">*</span></label>
-            <input type="email" id="email" name="email" required />
+            <label for="email">' . pll__('Email') . '&nbsp;<span class="required"></span></label>
+            <input type="email" id="email" name="email" />
             </p>
             <p>
             <label for="phone_number">' . pll__('Mobile Phone Number') . '&nbsp;<span class="required"></span></label>
