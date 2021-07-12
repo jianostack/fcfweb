@@ -162,7 +162,7 @@ class Activator
           fullname tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
           email tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
           phone_number varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci  NOT NULL,
-          service tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_civ NOT NULL,
+          service tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
           session tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
           is_del boolean DEFAULT false NOT NULL,
           PRIMARY KEY (id)
