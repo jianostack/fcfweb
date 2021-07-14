@@ -236,6 +236,8 @@ class ContactForm
                   AND is_del = 0
                   " );
 
+
+
                 // localhost validation . Also not working for Chinese 
                 if ( isset($fullname) && isset($email) && !isset($is_duplicate) ) {
                 // staging and production recaptcha and duplicate validation

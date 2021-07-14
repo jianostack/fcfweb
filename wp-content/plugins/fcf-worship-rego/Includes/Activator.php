@@ -155,7 +155,6 @@ class Activator
 
       $charset_collate = $wpdb->get_charset_collate();
       $table_name = $wpdb->prefix . 'worship_registration';
-
       $sql = "CREATE TABLE $table_name (
           id mediumint(9) NOT NULL AUTO_INCREMENT,
           time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
@@ -171,30 +170,8 @@ class Activator
       require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
       dbDelta( $sql );
 
-      // for ($i = 0; $i < 25; $i++) {
-      //   $wpdb->insert(
-      //       $table_name,
-      //       array(
-      //           'time' => date('Y-m-d H:i:s'),
-      //           'fullname' => 'Mr FCF',
-      //           'email' => 'me@fcf.com',
-      //           'phone_number' => '12345678',
-      //           'service' => 'Breaking of Bread',
-      //           'session'  => 'English'
-      //       ));
-      // }
+      add_option( 'english_session_limit', '250' );
+      add_option( 'chinese_session_limit', '250' );
 
-      // for ($i = 0; $i < 25; $i++) {
-      //   $wpdb->insert(
-      //       $table_name,
-      //       array(
-      //           'time' => date('Y-m-d H:i:s'),
-      //           'fullname' => 'Mr Robot',
-      //           'email' => 'me@mrrobot.com',
-      //           'phone_number' => '87654321',
-      //           'service' => 'Both Services',
-      //           'session'  => 'Chinese'
-      //       ));
-      // }
   }
 }
