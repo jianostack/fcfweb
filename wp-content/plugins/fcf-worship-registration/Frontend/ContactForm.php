@@ -94,9 +94,11 @@ class ContactForm
                   WHERE session = '$session'
                   AND is_del = 0" );
 
-        if ( $session == 'English' && $worshipers->count > 55 ) {
+        $worship_registration_options = get_option('worship-registration-options');
+
+        if ( $session == 'English' && $worshipers->count > $worship_registration_options['english-limit'] ) {
             $html = '<p>Registration is closed.</p>';
-        } else if ( $session == 'Chinese' && $worshipers->count > 55) {
+        } else if ( $session == 'Chinese' && $worshipers->count > $worship_registration_options['chinese-limit']) {
             $html = '<p>Registration is closed.</p>';
         } else {
             $html = $this->getFormHtml();
@@ -236,13 +238,8 @@ class ContactForm
                   AND is_del = 0
                   " );
 
-
-
-                // localhost validation . Also not working for Chinese 
-                if ( isset($fullname) && isset($email) && !isset($is_duplicate) ) {
-                // staging and production recaptcha and duplicate validation
                 // if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
-
+                if ( isset($fullname) && !isset($is_duplicate) ) {
                   $inserted = $wpdb->insert(
                   $table_name,
                   array(

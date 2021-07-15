@@ -323,7 +323,7 @@ class Settings extends SettingsBase
         // Display the settings data for easier examination. Delete it, if you don't need it.
         echo '<p>Display the settings as stored in the database:</p>';
         $this->generalOptions = $this->getGeneralOptions();
-        var_dump($this->generalOptions);
+        // var_dump($this->generalOptions);
 
         echo '<p>' . esc_html__('General options.', 'worship-registration') . '</p>';
     }
@@ -365,6 +365,7 @@ class Settings extends SettingsBase
             'show_in_rest' => false
         );
         register_setting($this->exampleOptionGroup, $this->exampleOptionName, $registerSettingArguments);
+
     }
 
     /**
@@ -410,7 +411,7 @@ class Settings extends SettingsBase
         // Display the settings data for easier examination. Delete it, if you don't need it.
         $this->exampleOptions = $this->getExampleOptions();
         // echo '<p>Display the settings as stored in the database:</p>';
-        var_dump($this->exampleOptions);
+        // var_dump($this->exampleOptions);
 
         // echo '<p>' . esc_html__('Provides examples of the five basic element types.', 'worship-registration') . '</p>';
     }
