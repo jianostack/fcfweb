@@ -259,7 +259,7 @@ class ContactForm
 
                 } else {
 
-                  echo "<p>Form submission failed.</p>";
+                  echo "<p>".pll__('Worship duplicate message')."</p>";
 
                 }
 
