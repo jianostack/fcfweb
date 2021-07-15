@@ -236,6 +236,7 @@ class ContactForm
                   SELECT * FROM $table_name
                   WHERE fullname = '$fullname'
                   AND is_del = 0
+                  AND service = '$service'
                   " );
 
                 // if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
