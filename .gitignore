@@ -6,7 +6,7 @@ vendor
 wp-content/themes/*
 !twentytwenty-child
 wp-content/plugins/*
-!fcf-worship-rego
+!fcf-worship-registration
 uploads
 .env
 .env_*
