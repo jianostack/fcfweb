@@ -112,7 +112,7 @@ class NetworkSettings extends SettingsBase
         if ($isNetworkAdmin)
         {
             add_action('network_admin_menu', array($this, 'setupNetworkSettingsMenu'));
-            add_action('network_admin_edit_worship_rego_update_network_options', array($this, 'worship_rego_update_network_options'));
+            add_action('network_admin_edit_worship_registration_update_network_options', array($this, 'worship_registration_update_network_options'));
         }
     }
 
@@ -123,8 +123,8 @@ class NetworkSettings extends SettingsBase
     {
         //Add the menu item to the Main menu
         add_menu_page(
-            'Worship Rego Network Options',                      // Page title: The title to be displayed in the browser window for this page.
-            'Worship Rego',                                      // Menu title: The text to be used for the menu.
+            'Worship Registration Network Options',                      // Page title: The title to be displayed in the browser window for this page.
+            'Worship Registration',                                      // Menu title: The text to be used for the menu.
             'manage_network_options',                           // Capability: The capability required for this menu to be displayed to the user.
             $this->menuSlug,                                    // Menu slug: The slug name to refer to this menu by. Should be unique for this menu page.
             array($this, 'renderNetworkSettingsPageContent'),   // Callback: The name of the function to call when rendering this menu's page
@@ -185,7 +185,7 @@ class NetworkSettings extends SettingsBase
         <!-- Create a header in the default WordPress 'wrap' container -->
         <div class="wrap">
 
-            <h2><?php esc_html_e('Worship Rego Network Options', 'worship-registration'); ?></h2>
+            <h2><?php esc_html_e('Worship Registration Network Options', 'worship-registration'); ?></h2>
 
             <?php $activeTab = isset($_GET['tab']) ? $_GET['tab'] : 'general_options'; ?>
 
@@ -194,7 +194,7 @@ class NetworkSettings extends SettingsBase
                 <a href="?page=<?php echo $this->menuSlug; ?>&tab=examples" class="nav-tab <?php echo $activeTab === 'examples' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Examples', 'worship-registration'); ?></a>
             </h2>
 
-            <form method="post" action="edit.php?action=worship_rego_update_network_options">
+            <form method="post" action="edit.php?action=worship_registration_update_network_options">
                 <?php
                 if ($activeTab === 'general_options')
                 {
@@ -218,7 +218,7 @@ class NetworkSettings extends SettingsBase
      * This function here is hooked up to a special action and necessary to process
      * the saving of the options. This is the big difference with a normal options page.
      */
-    public function worship_rego_update_network_options()
+    public function worship_registration_update_network_options()
     {
         // Security check.
         // On the settings page we used the '$this->generalOptionGroup' slug when calling 'settings_fields'

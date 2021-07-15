@@ -57,8 +57,8 @@ class Main
      */
     public function __construct()
     {
-        $this->version = WORSHIP_REGO_VERSION;
-        $this->pluginSlug = WORSHIP_REGO_SLUG;
+        $this->version = WORSHIP_REGISTRATION_VERSION;
+        $this->pluginSlug = WORSHIP_REGISTRATION_SLUG;
     }
 
     /**

@@ -170,8 +170,5 @@ class Activator
       require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
       dbDelta( $sql );
 
-      add_option( 'english_session_limit', '250' );
-      add_option( 'chinese_session_limit', '250' );
-
   }
 }

@@ -29,12 +29,12 @@ The WordPress Plugin Boilerplate includes the following files:
 The Boilerplate can be installed directly into your plugins folder "as-is". You will want to rename it and the classes inside of it to fit your needs. For example, if your plugin is named 'example-me' then:
 
 * rename files from `worship-registration` to `example-me`
-* change `worship_rego` to `example_me`
+* change `worship_registration` to `example_me`
 * change `worship-registration` to `example-me`
-* change `Worship_Rego` to `Example_Me`
-* change `WORSHIP_REGO_` to `EXAMPLE_ME_`
+* change `Worship_Registration` to `Example_Me`
+* change `WORSHIP_REGISTRATION` to `EXAMPLE_ME_`
 * change `WorshipRegistration` to `ExampleMe`
-* change `Worship Rego` to `Example Me`
+* change `Worship Registration` to `Example Me`
 
 It's safe to activate the plugin at this point.
 

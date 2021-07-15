@@ -84,6 +84,7 @@ class Settings extends SettingsBase
     private string $debugId;
 
     private string $englishLimit;
+    private string $chineseLimit;
     private string $textareaExampleId;
     private string $checkboxExampleId;
     private string $radioExampleId;
@@ -116,9 +117,10 @@ class Settings extends SettingsBase
         $this->exampleOptionGroup = $pluginSlug . '-example-option-group';
         $this->worshipLimitsSection = $pluginSlug . '-example-section';
         $this->examplePage = $pluginSlug . '-example';
-        $this->exampleOptionName = $pluginSlug . '-example';
+        $this->exampleOptionName = $pluginSlug . '-options';
 
-        $this->englishLimit = 'text-example' . self::TEXT_SUFFIX;
+        $this->englishLimit = 'english-limit';
+        $this->chineseLimit = 'chinese-limit';
         $this->textareaExampleId = 'textarea-example' . self::TEXTAREA_SUFFIX;
         $this->checkboxExampleId = 'checkbox-example' . self::CHECKBOX_SUFFIX;
         $this->radioExampleId = 'radio-example' . self::RADIO_SUFFIX;
@@ -354,6 +356,7 @@ class Settings extends SettingsBase
 
         add_settings_field($this->englishLimit, __('English session limit', 'worship-registration'), array($this, 'inputElementCallback'), $this->examplePage, $this->worshipLimitsSection, array('label_for' => $this->englishLimit));
 
+        add_settings_field($this->chineseLimit, __('Chinese session limit', 'worship-registration'), array($this, 'inputElementCallbacktwo'), $this->examplePage, $this->worshipLimitsSection, array('label_for' => $this->chineseLimit));
 
         $registerSettingArguments = array(
             'type' => 'array',
@@ -394,11 +397,8 @@ class Settings extends SettingsBase
     private function defaultInputOptions(): array
     {
         return array(
-            $this->englishLimit      => 'default input example',
-            $this->textareaExampleId  => '',
-            $this->checkboxExampleId  => '',
-            $this->radioExampleId     => '2',
-            $this->selectExampleId    => 'default'
+            $this->englishLimit => 250,
+            $this->chineseLimit => 250,
         );
     }
 
@@ -410,7 +410,7 @@ class Settings extends SettingsBase
         // Display the settings data for easier examination. Delete it, if you don't need it.
         $this->exampleOptions = $this->getExampleOptions();
         // echo '<p>Display the settings as stored in the database:</p>';
-        // var_dump($this->exampleOptions);
+        var_dump($this->exampleOptions);
 
         // echo '<p>' . esc_html__('Provides examples of the five basic element types.', 'worship-registration') . '</p>';
     }
@@ -418,6 +418,11 @@ class Settings extends SettingsBase
     public function inputElementCallback(): void
     {
         printf('<input type="text" id="%s" name="%s[%s]" value="%s" />', $this->englishLimit, $this->exampleOptionName, $this->englishLimit, esc_attr($this->exampleOptions[$this->englishLimit]));
+    }
+
+    public function inputElementCallbacktwo(): void
+    {
+        printf('<input type="text" id="%s" name="%s[%s]" value="%s" />', $this->chineseLimit, $this->exampleOptionName, $this->chineseLimit, esc_attr($this->exampleOptions[$this->chineseLimit]));
     }
 
     public function textareaElementCallback(): void

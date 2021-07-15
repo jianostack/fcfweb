@@ -43,12 +43,12 @@ require_once plugin_dir_path(__FILE__) . 'Autoloader.php';
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('WORSHIP_REGO_VERSION', '1.0.0');
+define('WORSHIP_REGISTRATION_VERSION', '1.0.0');
 
 /**
  * The string used to uniquely identify this plugin.
  */
-define('WORSHIP_REGO_SLUG', 'worship-registration');
+define('WORSHIP_REGISTRATION_SLUG', 'worship-registration');
 
 /**
  * Configuration data
@@ -56,14 +56,14 @@ define('WORSHIP_REGO_SLUG', 'worship-registration');
  *                  only when database update is required.
  */
 $configuration = array(
-    'version'       => WORSHIP_REGO_VERSION,
+    'version'       => WORSHIP_REGISTRATION_VERSION,
     'db-version'    => 1
 );
 
 /**
  * The ID for the configuration options in the database.
  */
-$configurationOptionName = WORSHIP_REGO_SLUG . '-configuration';
+$configurationOptionName = WORSHIP_REGISTRATION_SLUG . '-configuration';
     
 /**
  * The code that runs during plugin activation.

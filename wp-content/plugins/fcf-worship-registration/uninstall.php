@@ -22,7 +22,7 @@
  * @link       http://example.com
  * @since      1.0.0
  *
- * @package    Worship_Rego
+ * @package    Worship_Registration
  */
 
 declare(strict_types=1);
