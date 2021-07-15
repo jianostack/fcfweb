@@ -51,7 +51,7 @@ class Settings extends SettingsBase
      * @since    1.0.0
      */
     private string $generalSettingsSectionId;
-    private string $exampleSettingsSectionId;
+    private string $worshipLimitsSection;
 
     /**
      * General settings page.
@@ -83,7 +83,7 @@ class Settings extends SettingsBase
      */
     private string $debugId;
 
-    private string $textExampleId;
+    private string $englishLimit;
     private string $textareaExampleId;
     private string $checkboxExampleId;
     private string $radioExampleId;
@@ -114,11 +114,11 @@ class Settings extends SettingsBase
          * Input example
          */
         $this->exampleOptionGroup = $pluginSlug . '-example-option-group';
-        $this->exampleSettingsSectionId = $pluginSlug . '-example-section';
+        $this->worshipLimitsSection = $pluginSlug . '-example-section';
         $this->examplePage = $pluginSlug . '-example';
         $this->exampleOptionName = $pluginSlug . '-example';
 
-        $this->textExampleId = 'text-example' . self::TEXT_SUFFIX;
+        $this->englishLimit = 'text-example' . self::TEXT_SUFFIX;
         $this->textareaExampleId = 'textarea-example' . self::TEXTAREA_SUFFIX;
         $this->checkboxExampleId = 'checkbox-example' . self::CHECKBOX_SUFFIX;
         $this->radioExampleId = 'radio-example' . self::RADIO_SUFFIX;
@@ -178,14 +178,11 @@ class Settings extends SettingsBase
             <h2><?php esc_html_e('Worship Options', 'worship-rego'); ?></h2>
 
             <form method="post" action="options.php">
-                <?php
-
-                    settings_fields($this->exampleOptionGroup);
-                    do_settings_sections($this->examplePage);
-
-
-                submit_button();
-                ?>
+              <?php
+              settings_fields($this->exampleOptionGroup);
+              do_settings_sections($this->examplePage);
+              submit_button();
+              ?>
             </form>
 
         </div><!-- /.wrap -->
@@ -227,18 +224,15 @@ class Settings extends SettingsBase
             </div>
         </div>
         <?php
-
         $registration_list_table = new Admin_List_Table();
         $registration_list_table->prepare_items();
         ?>
-            <div class="wrap">
-                <div id="icon-users" class="icon32"></div>
-                <?php $registration_list_table->display(); ?>
-            </div>
+        <div class="wrap">
+          <div id="icon-users" class="icon32"></div>
+          <?php $registration_list_table->display(); ?>
+        </div>
         <?php
-
-    }
-
+      }
 
     /**
      * Initializes the General Options by registering the Sections, Fields, and Settings.
@@ -253,7 +247,7 @@ class Settings extends SettingsBase
         // Add a new section to a settings page.
       add_settings_section(
             $this->generalSettingsSectionId,            // ID used to identify this section and with which to register options
-            __('General', 'plugin-name'),               // Title to be displayed on the administration page
+            __('General', 'worship-registration'),               // Title to be displayed on the administration page
             array($this, 'generalOptionsCallback'),     // Callback used to render the description of the section
             $this->generalPage                          // Page on which to add this section of options
           );
@@ -261,7 +255,7 @@ class Settings extends SettingsBase
         // Next, we'll introduce the fields for toggling the visibility of content elements.
       add_settings_field(
             $this->debugId,                        // ID used to identify the field throughout the theme.
-            __('Debug', 'plugin-name'),            // The label to the left of the option interface element.
+            __('Debug', 'worship-registration'),            // The label to the left of the option interface element.
             array($this, 'debugCallback'),         // The name of the function responsible for rendering the option interface.
             $this->generalPage,                    // The page on which this option will be displayed.
             $this->generalSettingsSectionId,       // The name of the section to which this field belongs.
@@ -356,11 +350,10 @@ class Settings extends SettingsBase
     {
         $this->exampleOptions = $this->getExampleOptions();
 
-        add_settings_section($this->exampleSettingsSectionId, __('Limits', 'plugin-name'), array($this, 'inputExamplesCallback'), $this->examplePage);
+        add_settings_section($this->worshipLimitsSection, __('Limits', 'worship-registration'), array($this, 'inputExamplesCallback'), $this->examplePage);
 
-        add_settings_field($this->textExampleId, __('English session limit', 'plugin-name'), array($this, 'inputElementCallback'), $this->examplePage, $this->exampleSettingsSectionId, array('label_for' => $this->textExampleId));
+        add_settings_field($this->englishLimit, __('English session limit', 'worship-registration'), array($this, 'inputElementCallback'), $this->examplePage, $this->worshipLimitsSection, array('label_for' => $this->englishLimit));
 
-        add_settings_field($this->chineseSessionLimit, __('Chinese session limit', 'plugin-name'), array($this, 'inputElementCallback'), $this->examplePage, $this->exampleSettingsSectionId, array('label_for' => $this->textExampleId));
 
         $registerSettingArguments = array(
             'type' => 'array',
@@ -401,7 +394,7 @@ class Settings extends SettingsBase
     private function defaultInputOptions(): array
     {
         return array(
-            $this->textExampleId      => 'default input example',
+            $this->englishLimit      => 'default input example',
             $this->textareaExampleId  => '',
             $this->checkboxExampleId  => '',
             $this->radioExampleId     => '2',
@@ -419,12 +412,12 @@ class Settings extends SettingsBase
         // echo '<p>Display the settings as stored in the database:</p>';
         // var_dump($this->exampleOptions);
 
-        // echo '<p>' . esc_html__('Provides examples of the five basic element types.', 'plugin-name') . '</p>';
+        // echo '<p>' . esc_html__('Provides examples of the five basic element types.', 'worship-registration') . '</p>';
     }
 
     public function inputElementCallback(): void
     {
-        printf('<input type="text" id="%s" name="%s[%s]" value="%s" />', $this->textExampleId, $this->exampleOptionName, $this->textExampleId, esc_attr($this->exampleOptions[$this->textExampleId]));
+        printf('<input type="text" id="%s" name="%s[%s]" value="%s" />', $this->englishLimit, $this->exampleOptionName, $this->englishLimit, esc_attr($this->exampleOptions[$this->englishLimit]));
     }
 
     public function textareaElementCallback(): void
@@ -467,10 +460,10 @@ class Settings extends SettingsBase
     public function selectElementCallback(): void
     {
         $html = sprintf('<select id="%s" name="%s[%s]">', $this->selectExampleId, $this->exampleOptionName, $this->selectExampleId);
-        $html .= '<option value="default">' . esc_html__('Select a time option...', 'plugin-name') . '</option>';
-        $html .= sprintf('<option value="never" %s >%s</option>', selected($this->exampleOptions[$this->selectExampleId], 'never', false), esc_html__('Never', 'plugin-name'));
-        $html .= sprintf('<option value="sometimes" %s >%s</option>', selected($this->exampleOptions[$this->selectExampleId], 'sometimes', false), esc_html__('Sometimes', 'plugin-name'));
-        $html .= sprintf('<option value="always" %s >%s</option>', selected($this->exampleOptions[$this->selectExampleId], 'always', false), esc_html__('Always', 'plugin-name'));
+        $html .= '<option value="default">' . esc_html__('Select a time option...', 'worship-registration') . '</option>';
+        $html .= sprintf('<option value="never" %s >%s</option>', selected($this->exampleOptions[$this->selectExampleId], 'never', false), esc_html__('Never', 'worship-registration'));
+        $html .= sprintf('<option value="sometimes" %s >%s</option>', selected($this->exampleOptions[$this->selectExampleId], 'sometimes', false), esc_html__('Sometimes', 'worship-registration'));
+        $html .= sprintf('<option value="always" %s >%s</option>', selected($this->exampleOptions[$this->selectExampleId], 'always', false), esc_html__('Always', 'worship-registration'));
         $html .= '</select>';
 
         echo $html;
@@ -482,7 +475,7 @@ class Settings extends SettingsBase
     public function getTextExample(): string
     {
         $this->exampleOptions = $this->getExampleOptions();
-        return $this->exampleOptions[$this->textExampleId];
+        return $this->exampleOptions[$this->englishLimit];
     }
 
     /**

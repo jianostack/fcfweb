@@ -46,8 +46,7 @@ class Admin_List_Table extends WP_List_Table
     public function get_columns()
     {
         $columns = array(
-            'id' => 'ID',
-            'time' => 'time',
+            'time' => 'Time',
             'fullname' => 'Full Name',
             'email' => 'Email',
             'phone_number' => 'Phone Number',
@@ -77,7 +76,7 @@ class Admin_List_Table extends WP_List_Table
     {
         return array(
           'session' => array('session', false),
-          'id' => array('id', false),
+          'number' => array('number', false),
           'time' => array('time', false),
           'email' => array('email', false)
         );
@@ -91,6 +90,7 @@ class Admin_List_Table extends WP_List_Table
     private function table_data()
     {
         global $wpdb;
+
         $table_name = $wpdb->prefix . 'worship_registration';
         $data = $wpdb->get_results("SELECT * FROM $table_name WHERE is_del = 0", ARRAY_A);
 
@@ -108,7 +108,6 @@ class Admin_List_Table extends WP_List_Table
     public function column_default( $item, $column_name )
     {
         switch( $column_name ) {
-            case 'id':
             case 'time':
             case 'fullname':
             case 'email':
@@ -130,7 +129,7 @@ class Admin_List_Table extends WP_List_Table
     private function sort_data( $a, $b )
     {
         // Set defaults
-        $orderby = 'id';
+        $orderby = 'time';
         $order = 'asc';
 
         // If orderby is set, use this as the sort column
@@ -144,7 +143,6 @@ class Admin_List_Table extends WP_List_Table
         {
             $order = $_GET['order'];
         }
-
 
         $result = strcmp( $a[$orderby], $b[$orderby] );
 
