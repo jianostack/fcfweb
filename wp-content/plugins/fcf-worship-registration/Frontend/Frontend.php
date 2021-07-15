@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace WorshipRego\Frontend;
+namespace WorshipRegistration\Frontend;
 
-use WorshipRego\Admin\Settings;
+use WorshipRegistration\Admin\Settings;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -18,8 +18,8 @@ if (!defined('ABSPATH')) exit;
  * @link       http://example.com
  * @since      1.0.0
  *
- * @package    WorshipRego
- * @subpackage WorshipRego/Frontend
+ * @package    WorshipRegistration
+ * @subpackage WorshipRegistration/Frontend
  * @author     Your Name <email@example.com>
  */
 class Frontend
@@ -95,7 +95,7 @@ class Frontend
          * - Dependency: The style can be used as dependency, so the style will be automatically loaded, if one style is depend on it.
          */
         $styleId = $this->pluginSlug . '-frontend';
-        $styleFileName = ($this->settings->getDebug() === true) ? 'worship-rego-frontend.css' : 'worship-rego-frontend.min.css';
+        $styleFileName = ($this->settings->getDebug() === true) ? 'worship-registration-frontend.css' : 'worship-registration-frontend.min.css';
         $styleUrl = plugin_dir_url(__FILE__) . 'css/' . $styleFileName;
         if (wp_register_style($styleId, $styleUrl, array(), $this->version, 'all') === false)
         {
@@ -128,11 +128,11 @@ class Frontend
          * - Dependency: The script can be used as dependency, so the script will be automatically loaded, if one script is depend on it.
          */
         $scriptId = $this->pluginSlug . '-frontend';
-        $scripFileName = ($this->settings->getDebug() === true) ? 'worship-rego-frontend.js' : 'worship-rego-frontend.min.js';
+        $scripFileName = ($this->settings->getDebug() === true) ? 'worship-registration-frontend.js' : 'worship-registration-frontend.min.js';
         $scriptUrl = plugin_dir_url(__FILE__) . 'js/' . $scripFileName;
         if (wp_register_script($scriptId, $scriptUrl, array('jquery'), $this->version, false) === false)
         {
-            exit(esc_html__('Script could not be registered: ', 'worship-rego') . $scriptUrl);
+            exit(esc_html__('Script could not be registered: ', 'worship-registration') . $scriptUrl);
         }
 
         /**
@@ -145,11 +145,11 @@ class Frontend
         /**
          * Register the Contact Form script which is used in the Contact Form shortcode.
          */
-        $contactFormScripFileName = ($this->settings->getDebug() === true) ? 'worship-rego-contact-form.js' : 'worship-rego-contact-form.min.js';
+        $contactFormScripFileName = ($this->settings->getDebug() === true) ? 'worship-registration-contact-form.js' : 'worship-registration-contact-form.min.js';
         $contactFormScriptUrl = plugin_dir_url(__FILE__) . 'js/' . $contactFormScripFileName;
         if (wp_register_script($this->pluginSlug . 'contact-form', $contactFormScriptUrl, array('jquery'), $this->version, false) === false)
         {
-            exit(esc_html__('Script could not be registered: ', 'worship-rego') . $contactFormScriptUrl);
+            exit(esc_html__('Script could not be registered: ', 'worship-registration') . $contactFormScriptUrl);
         }
     }
 }

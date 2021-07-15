@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace WorshipRego\Includes;
+namespace WorshipRegistration\Includes;
 
-use WorshipRego\Includes\I18n;
-use WorshipRego\Admin\Admin;
-use WorshipRego\Admin\Updater;
-use WorshipRego\Admin\Settings;
-use WorshipRego\Admin\NetworkSettings;
-use WorshipRego\Frontend\Frontend;
-use WorshipRego\Frontend\ContactForm;
+use WorshipRegistration\Includes\I18n;
+use WorshipRegistration\Admin\Admin;
+use WorshipRegistration\Admin\Updater;
+use WorshipRegistration\Admin\Settings;
+use WorshipRegistration\Admin\NetworkSettings;
+use WorshipRegistration\Frontend\Frontend;
+use WorshipRegistration\Frontend\ContactForm;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -26,8 +26,8 @@ if (!defined('ABSPATH')) exit;
  *
  * @link       http://example.com
  * @since      1.0.0
- * @package    WorshipRego
- * @subpackage WorshipRego/Includes
+ * @package    WorshipRegistration
+ * @subpackage WorshipRegistration/Includes
  * @author     Your Name <email@example.com>
  */
 class Main
@@ -57,8 +57,8 @@ class Main
      */
     public function __construct()
     {
-        $this->version = WORSHIP_REGO_VERSION;
-        $this->pluginSlug = WORSHIP_REGO_SLUG;
+        $this->version = WORSHIP_REGISTRATION_VERSION;
+        $this->pluginSlug = WORSHIP_REGISTRATION_SLUG;
     }
 
     /**

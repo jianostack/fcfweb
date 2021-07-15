@@ -1,6 +1,6 @@
 <?php
 
-namespace WorshipRego\Frontend;
+namespace WorshipRegistration\Frontend;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -10,8 +10,8 @@ if (!defined('ABSPATH')) exit;
  *
  * @link       http://example.com
  * @since      1.0.0
- * @package    WorshipRego
- * @subpackage WorshipRego/Includes
+ * @package    WorshipRegistration
+ * @subpackage WorshipRegistration/Includes
  * @author     Your Name <email@example.com>
  */
 class ContactForm
@@ -94,9 +94,11 @@ class ContactForm
                   WHERE session = '$session'
                   AND is_del = 0" );
 
-        if ( $session == 'English' && $worshipers->count > 55 ) {
+        $worship_registration_options = get_option('worship-registration-options');
+
+        if ( $session == 'English' && $worshipers->count > $worship_registration_options['english-limit'] ) {
             $html = '<p>Registration is closed.</p>';
-        } else if ( $session == 'Chinese' && $worshipers->count > 55) {
+        } else if ( $session == 'Chinese' && $worshipers->count > $worship_registration_options['chinese-limit']) {
             $html = '<p>Registration is closed.</p>';
         } else {
             $html = $this->getFormHtml();
@@ -141,7 +143,7 @@ class ContactForm
     {
         $html = '<div>
             <p id="capitalized-subject"></p>
-            <form action="' . esc_url($_SERVER['REQUEST_URI']) . '" method="post" id="worship-rego">
+            <form action="' . esc_url($_SERVER['REQUEST_URI']) . '" method="post" id="worship-registration">
             <input type="hidden" name="token" id="token" />
             <input type="hidden" name="action" id="action" />
             <p>' . wp_nonce_field('getFormHtml', 'getFormHtml_nonce', true, false) . '</p>
@@ -166,7 +168,7 @@ class ContactForm
             <option value="Both Services">' . pll__('Both Services') . '</option>
             </select>
             </p>
-            <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-rego') . '"/></p>
+            <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-registration') . '"/></p>
             </form>
             <script src="https://www.google.com/recaptcha/api.js?render=6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K"></script>
             <script type="text/javascript">
@@ -234,13 +236,11 @@ class ContactForm
                   SELECT * FROM $table_name
                   WHERE fullname = '$fullname'
                   AND is_del = 0
+                  AND service = '$service'
                   " );
 
-                // localhost validation . Also not working for Chinese 
-                if ( isset($fullname) && isset($email) && !isset($is_duplicate) ) {
-                // staging and production recaptcha and duplicate validation
                 // if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
-
+                if ( isset($fullname) && !isset($is_duplicate) ) {
                   $inserted = $wpdb->insert(
                   $table_name,
                   array(
@@ -252,7 +252,7 @@ class ContactForm
                       'session' => $session
                   ));
                   if ( $inserted ) {
-                    echo("<script> jQuery('#worship-rego')[0].reset();</script>");
+                    echo("<script> jQuery('#worship-registration')[0].reset();</script>");
                     echo "<p>".pll__('Thank you')."</p>";
                   } else {
                     echo "<p>Form submission failed.</p>";
@@ -260,13 +260,13 @@ class ContactForm
 
                 } else {
 
-                  echo "<p>Form submission failed.</p>";
+                  echo "<p>".pll__('Worship duplicate message')."</p>";
 
                 }
 
             } else {
 
-              exit(esc_html__('Failed security check.', 'worship-rego'));
+              exit(esc_html__('Failed security check.', 'worship-registration'));
 
             }
         }

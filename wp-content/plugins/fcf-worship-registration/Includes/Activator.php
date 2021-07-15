@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WorshipRego\Includes;
+namespace WorshipRegistration\Includes;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -16,8 +16,8 @@ if (!defined('ABSPATH')) exit;
  *
  * @link       http://example.com
  * @since      1.0.0
- * @package    WorshipRego
- * @subpackage WorshipRego/Includes
+ * @package    WorshipRegistration
+ * @subpackage WorshipRegistration/Includes
  * @author     Your Name <email@example.com>
  */
 class Activator
@@ -106,7 +106,7 @@ class Activator
      */
     public static function activateNewSite(int $blogId): void
     {
-        if (is_plugin_active_for_network('worship-rego/worship-rego.php'))
+        if (is_plugin_active_for_network('worship-registration/worship-registration.php'))
         {
             switch_to_blog($blogId);
             self::checkDependencies(true, $blogId);
@@ -155,7 +155,6 @@ class Activator
 
       $charset_collate = $wpdb->get_charset_collate();
       $table_name = $wpdb->prefix . 'worship_registration';
-
       $sql = "CREATE TABLE $table_name (
           id mediumint(9) NOT NULL AUTO_INCREMENT,
           time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
@@ -171,30 +170,5 @@ class Activator
       require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
       dbDelta( $sql );
 
-      // for ($i = 0; $i < 25; $i++) {
-      //   $wpdb->insert(
-      //       $table_name,
-      //       array(
-      //           'time' => date('Y-m-d H:i:s'),
-      //           'fullname' => 'Mr FCF',
-      //           'email' => 'me@fcf.com',
-      //           'phone_number' => '12345678',
-      //           'service' => 'Breaking of Bread',
-      //           'session'  => 'English'
-      //       ));
-      // }
-
-      // for ($i = 0; $i < 25; $i++) {
-      //   $wpdb->insert(
-      //       $table_name,
-      //       array(
-      //           'time' => date('Y-m-d H:i:s'),
-      //           'fullname' => 'Mr Robot',
-      //           'email' => 'me@mrrobot.com',
-      //           'phone_number' => '87654321',
-      //           'service' => 'Both Services',
-      //           'session'  => 'Chinese'
-      //       ));
-      // }
   }
 }

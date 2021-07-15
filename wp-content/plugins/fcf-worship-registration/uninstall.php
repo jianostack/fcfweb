@@ -22,7 +22,7 @@
  * @link       http://example.com
  * @since      1.0.0
  *
- * @package    Worship_Rego
+ * @package    Worship_Registration
  */
 
 declare(strict_types=1);
@@ -79,7 +79,7 @@ else
  */
 function deleteConfigOptions(int $currentNetworkId): void
 {
-    delete_network_option($currentNetworkId, 'worship-rego-configuration');
+    delete_network_option($currentNetworkId, 'worship-registration-configuration');
 }
 
 /**
@@ -89,7 +89,7 @@ function deleteConfigOptions(int $currentNetworkId): void
  */
 function deleteNetworkOptions(int $currentNetworkId): void
 {
-    delete_network_option($currentNetworkId, 'worship-rego-network-general');
+    delete_network_option($currentNetworkId, 'worship-registration-network-general');
 }
 
 /**
@@ -99,6 +99,6 @@ function deleteNetworkOptions(int $currentNetworkId): void
  */
 function deleteOptions(): void
 {
-    delete_option('worship-rego-general');
-    delete_option('worship-rego-example');
+    delete_option('worship-registration-general');
+    delete_option('worship-registration-example');
 }

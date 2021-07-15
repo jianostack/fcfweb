@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WorshipRego\Includes;
+namespace WorshipRegistration\Includes;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -12,8 +12,8 @@ if (!defined('ABSPATH')) exit;
  *
  * @link       http://example.com
  * @since      1.0.0
- * @package    WorshipRego
- * @subpackage WorshipRego/Includes
+ * @package    WorshipRegistration
+ * @subpackage WorshipRegistration/Includes
  * @author     Your Name <email@example.com>
  */
 class Updater
@@ -76,7 +76,7 @@ class Updater
                 }
                 else
                 {
-                    wp_die(__('Update routine not callable: ', 'worship-rego') . __CLASS__ . '\\' . $updateRoutineFunctionName . '()');
+                    wp_die(__('Update routine not callable: ', 'worship-registration') . __CLASS__ . '\\' . $updateRoutineFunctionName . '()');
                 }
             }
             

@@ -10,27 +10,27 @@
  *
  * @link              http://example.com
  * @since             1.0.0
- * @package           WorshipRego
+ * @package           WorshipRegistration
  *
  * @wordpress-plugin
  * Plugin Name:       Worship Registration
- * Plugin URI:        https://github.com/jianostack/worship-rego
+ * Plugin URI:        https://github.com/jianostack/fcf-worship-registration
  * Description:       Sunday Worship onsite registration
  * Version:           1.0.0
  * Author:            jianostack
- * Text Domain:       worship-rego
+ * Text Domain:       worship-registration
  * Domain Path:       /languages
  */
 
 // In strict mode, only a variable of exact type of the type declaration will be accepted.
 declare(strict_types=1);
 
-namespace WorshipRego;
+namespace WorshipRegistration;
 
-use WorshipRego\Includes\Activator;
-use WorshipRego\Includes\Deactivator;
-use WorshipRego\Includes\Updater;
-use WorshipRego\Includes\Main;
+use WorshipRegistration\Includes\Activator;
+use WorshipRegistration\Includes\Deactivator;
+use WorshipRegistration\Includes\Updater;
+use WorshipRegistration\Includes\Main;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -43,12 +43,12 @@ require_once plugin_dir_path(__FILE__) . 'Autoloader.php';
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('WORSHIP_REGO_VERSION', '1.0.0');
+define('WORSHIP_REGISTRATION_VERSION', '1.0.0');
 
 /**
  * The string used to uniquely identify this plugin.
  */
-define('WORSHIP_REGO_SLUG', 'worship-rego');
+define('WORSHIP_REGISTRATION_SLUG', 'worship-registration');
 
 /**
  * Configuration data
@@ -56,14 +56,14 @@ define('WORSHIP_REGO_SLUG', 'worship-rego');
  *                  only when database update is required.
  */
 $configuration = array(
-    'version'       => WORSHIP_REGO_VERSION,
+    'version'       => WORSHIP_REGISTRATION_VERSION,
     'db-version'    => 1
 );
 
 /**
  * The ID for the configuration options in the database.
  */
-$configurationOptionName = WORSHIP_REGO_SLUG . '-configuration';
+$configurationOptionName = WORSHIP_REGISTRATION_SLUG . '-configuration';
     
 /**
  * The code that runs during plugin activation.

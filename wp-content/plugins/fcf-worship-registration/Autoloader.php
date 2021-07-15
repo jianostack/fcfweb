@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WorshipRego;
+namespace WorshipRegistration;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) exit;
  * @link https://www.php-fig.org/psr/psr-4/examples/ The code this autoloader is based upon.
  *
  * @since             1.0.0
- * @package           WorshipRego
+ * @package           WorshipRegistration
  *
  * @param   $className The fully-qualified class name.
  * @return void
@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) exit;
 spl_autoload_register(function (string $className): void
 {
     // Project-specific namespace prefix
-    $prefix = 'WorshipRego\\';
+    $prefix = 'WorshipRegistration\\';
 
     // Base directory for the namespace prefix
     $baseDir = __DIR__ . '/';

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace WorshipRego\Admin;
+namespace WorshipRegistration\Admin;
 
-use WorshipRego\Admin\Settings;
+use WorshipRegistration\Admin\Settings;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -19,8 +19,8 @@ if (!defined('ABSPATH')) exit;
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    WorshipRego
- * @subpackage WorshipRego/Admin
+ * @package    WorshipRegistration
+ * @subpackage WorshipRegistration/Admin
  * @author     Your Name <email@example.com>
  */
 class Admin
@@ -102,7 +102,7 @@ class Admin
          * - Dependency: The style can be used as dependency, so the style will be automatically loaded, if one style is depend on it.
          */
         $styleId = $this->pluginSlug . '-admin';
-        $styleFileName = ($this->settings->getDebug() === true) ? 'worship-rego-admin.css' : 'worship-rego-admin.min.css';
+        $styleFileName = ($this->settings->getDebug() === true) ? 'worship-registration-admin.css' : 'worship-registration-admin.min.css';
         $styleUrl = plugin_dir_url(__FILE__) . 'css/' . $styleFileName;
         if (wp_register_style($styleId, $styleUrl, array(), $this->version, 'all') === false)
         {
@@ -141,11 +141,11 @@ class Admin
          * - Dependency: The script can be used as dependency, so the script will be automatically loaded, if one script is depend on it.
          */
         $scriptId = $this->pluginSlug . '-admin';
-        $scripFileName = ($this->settings->getDebug() === true) ? 'worship-rego-admin.js' : 'worship-rego-admin.min.js';
+        $scripFileName = ($this->settings->getDebug() === true) ? 'worship-registration-admin.js' : 'worship-registration-admin.min.js';
         $scriptUrl = plugin_dir_url(__FILE__) . 'js/' . $scripFileName;
         if (wp_register_script($scriptId, $scriptUrl, array('jquery'), $this->version, false) === false)
         {
-            exit(esc_html__('Script could not be registered: ', 'worship-rego') . $scriptUrl);
+            exit(esc_html__('Script could not be registered: ', 'worship-registration') . $scriptUrl);
         }
         
         /**

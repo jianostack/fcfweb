@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WorshipRego\Admin;
+namespace WorshipRegistration\Admin;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -13,8 +13,8 @@ if (!defined('ABSPATH')) exit;
  *
  * @since      1.0.0
  *
- * @package    WorshipRego
- * @subpackage WorshipRego/Admin
+ * @package    WorshipRegistration
+ * @subpackage WorshipRegistration/Admin
  */
 class SettingsBase
 {
@@ -41,7 +41,7 @@ class SettingsBase
      * @link https://divpusher.com/blog/wordpress-customizer-sanitization-examples/
      *
      * @since             1.0.0
-     * @package           WorshipRego
+     * @package           WorshipRegistration
      *
      * @param   $input      The unsanitized collection of options.
      * @return  $output     The collection of sanitized values.
@@ -104,7 +104,7 @@ class SettingsBase
      * Determine if a string ends with another string.
      *
      * @since             1.0.0
-     * @package           WorshipRego
+     * @package           WorshipRegistration
      *
      * @param   $haystack       Base string.
      * @param   $needle         The searched value.
