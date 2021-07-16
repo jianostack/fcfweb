@@ -159,15 +159,6 @@ class ContactForm
             <label for="phone_number">' . pll__('Mobile Phone Number') . '&nbsp;<span class="required"></span></label>
             <input type="number" id="phone_number" name="phone_number" />
             </p>
-            <p>
-            <label for="service">' . pll__('Which service will you be attending?') . '&nbsp;<span class="required">*</span></label>
-            <select name="service" id="service-select" required>
-            <option value="">' . pll__('Please choose 1') . '</option>
-            <option value="Breaking of Bread">' . pll__('Breaking of Bread') . '</option>
-            <option value="Worship Service">' . pll__('Worship Service') . '</option>
-            <option value="Both Services">' . pll__('Both Services') . '</option>
-            </select>
-            </p>
             <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-registration') . '"/></p>
             </form>
             <script src="https://www.google.com/recaptcha/api.js?render=6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K"></script>
@@ -236,7 +227,6 @@ class ContactForm
                   SELECT * FROM $table_name
                   WHERE fullname = '$fullname'
                   AND is_del = 0
-                  AND service = '$service'
                   " );
 
                 // if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
