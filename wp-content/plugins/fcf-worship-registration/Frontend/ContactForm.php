@@ -96,9 +96,9 @@ class ContactForm
 
         $worship_registration_options = get_option('worship-registration-options');
 
-        if ( $session == 'English' && $worshipers->count > $worship_registration_options['english-limit'] ) {
+        if ( $session == 'English' && $worshipers->count >= $worship_registration_options['english-limit'] ) {
             $html = '<p>Registration is closed.</p>';
-        } else if ( $session == 'Chinese' && $worshipers->count > $worship_registration_options['chinese-limit']) {
+        } else if ( $session == 'Chinese' && $worshipers->count >= $worship_registration_options['chinese-limit']) {
             $html = '<p>Registration is closed.</p>';
         } else {
             $html = $this->getFormHtml();
