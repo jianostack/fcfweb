@@ -9,7 +9,7 @@ The WordPress Plugin Boilerplate includes the following files:
 * `.gitignore`. Used to exclude certain files from the repository.
 * `CHANGELOG.md`. The list of changes to the core project.
 * `README.md`. The file that you’re currently reading.
-* A `worship-rego` directory that contains the source code - a fully executable WordPress plugin.
+* A `worship-registration` directory that contains the source code - a fully executable WordPress plugin.
 
 ## Features
 
@@ -28,13 +28,13 @@ The WordPress Plugin Boilerplate includes the following files:
 
 The Boilerplate can be installed directly into your plugins folder "as-is". You will want to rename it and the classes inside of it to fit your needs. For example, if your plugin is named 'example-me' then:
 
-* rename files from `worship-rego` to `example-me`
-* change `worship_rego` to `example_me`
-* change `worship-rego` to `example-me`
-* change `Worship_Rego` to `Example_Me`
-* change `WORSHIP_REGO_` to `EXAMPLE_ME_`
-* change `WorshipRego` to `ExampleMe`
-* change `Worship Rego` to `Example Me`
+* rename files from `worship-registration` to `example-me`
+* change `worship_registration` to `example_me`
+* change `worship-registration` to `example-me`
+* change `Worship_Registration` to `Example_Me`
+* change `WORSHIP_REGISTRATION` to `EXAMPLE_ME_`
+* change `WorshipRegistration` to `ExampleMe`
+* change `Worship Registration` to `Example Me`
 
 It's safe to activate the plugin at this point.
 
@@ -62,9 +62,9 @@ For reference, [here's a discussion](http://make.wordpress.org/themes/2013/03/04
 
 Note that if you include your own classes, or third-party libraries, there are three locations in which said files may go:
 
-* `worship-rego/Includes` is where functionality shared between the admin area and the public-facing parts of the site reside
-* `worship-rego/Admin` is for all admin-specific functionality
-* `worship-rego/Frontend` is for all public-facing functionality
+* `worship-registration/Includes` is where functionality shared between the admin area and the public-facing parts of the site reside
+* `worship-registration/Admin` is for all admin-specific functionality
+* `worship-registration/Frontend` is for all public-facing functionality
 
 ### Multisite development
 
@@ -111,7 +111,7 @@ Whitespaces: You must not add a whitespace before and after braces.
 
 declare(strict_types=1);
 
-namespace WorshipRego;
+namespace WorshipRegistration;
 
 if (!defined('ABSPATH')) exit;
 

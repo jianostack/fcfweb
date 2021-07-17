@@ -1,6 +1,6 @@
 <?php
 
-namespace WorshipRego\Frontend;
+namespace WorshipRegistration\Frontend;
 
 // If this file is called directly, abort.
 if (!defined('ABSPATH')) exit;
@@ -10,8 +10,8 @@ if (!defined('ABSPATH')) exit;
  *
  * @link       http://example.com
  * @since      1.0.0
- * @package    WorshipRego
- * @subpackage WorshipRego/Includes
+ * @package    WorshipRegistration
+ * @subpackage WorshipRegistration/Includes
  * @author     Your Name <email@example.com>
  */
 class ContactForm
@@ -43,10 +43,6 @@ class ContactForm
      */
     public function initializeHooks(bool $isAdmin): void
     {
-        // 'wp_ajax_' hook needs to be run on frontend and admin area too.
-        add_action('wp_ajax_capitalizeText', array($this, 'capitalizeText'), 10);
-
-        // Frontend
         if (!$isAdmin)
         {
             add_shortcode('add_worship_registration_form', array($this, 'formShortcode'));
@@ -83,9 +79,31 @@ class ContactForm
             // exit('wp_add_inline_script() failed. Inlined script: ' . $script);
         }
 
-        // Show the Form
-        $html = $this->getFormHtml();
-        $this->processFormData();
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'worship_registration';
+
+        if ( pll_current_language()=='en' ) {
+            $session = 'English';
+        } else {
+            $session = 'Chinese';
+        }
+
+        $worshipers = $wpdb->get_row( "
+                  SELECT COUNT(*) as count FROM $table_name
+                  WHERE session = '$session'
+                  AND is_del = 0" );
+
+        $worship_registration_options = get_option('worship-registration-options');
+
+        if ( $session == 'English' && $worshipers->count > $worship_registration_options['english-limit'] ) {
+            $html = '<p>Registration is closed.</p>';
+        } else if ( $session == 'Chinese' && $worshipers->count > $worship_registration_options['chinese-limit']) {
+            $html = '<p>Registration is closed.</p>';
+        } else {
+            $html = $this->getFormHtml();
+            $this->processFormData();
+        }
 
         return $html;
     }
@@ -125,7 +143,7 @@ class ContactForm
     {
         $html = '<div>
             <p id="capitalized-subject"></p>
-            <form action="' . esc_url($_SERVER['REQUEST_URI']) . '" method="post" id="worship-rego">
+            <form action="' . esc_url($_SERVER['REQUEST_URI']) . '" method="post" id="worship-registration">
             <input type="hidden" name="token" id="token" />
             <input type="hidden" name="action" id="action" />
             <p>' . wp_nonce_field('getFormHtml', 'getFormHtml_nonce', true, false) . '</p>
@@ -141,16 +159,7 @@ class ContactForm
             <label for="phone_number">' . pll__('Mobile Phone Number') . '&nbsp;<span class="required"></span></label>
             <input type="number" id="phone_number" name="phone_number" />
             </p>
-            <p>
-            <label for="service">' . pll__('Which service will you be attending?') . '&nbsp;<span class="required">*</span></label>
-            <select name="service" id="service-select" required>
-            <option value="">' . pll__('Please choose 1') . '</option>
-            <option value="Breaking of Bread">' . pll__('Breaking of Bread') . '</option>
-            <option value="Worship Service">' . pll__('Worship Service') . '</option>
-            <option value="Both Services">' . pll__('Both Services') . '</option>
-            </select>
-            </p>
-            <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-rego') . '"/></p>
+            <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-registration') . '"/></p>
             </form>
             <script src="https://www.google.com/recaptcha/api.js?render=6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K"></script>
             <script type="text/javascript">
@@ -217,13 +226,11 @@ class ContactForm
                 $is_duplicate = $wpdb->get_row( "
                   SELECT * FROM $table_name
                   WHERE fullname = '$fullname'
+                  AND is_del = 0
                   " );
 
-                // localhost validation . Also not working for Chinese 
-                if ( isset($fullname) && !isset($is_duplicate) ) {
-                // staging and production recaptcha and duplicate validation
                 // if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
-
+                if ( isset($fullname) && !isset($is_duplicate) ) {
                   $inserted = $wpdb->insert(
                   $table_name,
                   array(
@@ -235,21 +242,21 @@ class ContactForm
                       'session' => $session
                   ));
                   if ( $inserted ) {
-                    echo("<script> jQuery('#worship-rego')[0].reset();</script>");
+                    echo("<script> jQuery('#worship-registration')[0].reset();</script>");
                     echo "<p>".pll__('Thank you')."</p>";
                   } else {
-                    echo "<p>Form submission failed. Please try again 😔</p>";
+                    echo "<p>Form submission failed.</p>";
                   }
 
                 } else {
 
-                  echo "<p>Form submission failed. Please try again 😔</p>";
+                  echo "<p>".pll__('Worship duplicate message')."</p>";
 
                 }
 
             } else {
 
-              exit(esc_html__('Failed security check.', 'worship-rego'));
+              exit(esc_html__('Failed security check.', 'worship-registration'));
 
             }
         }

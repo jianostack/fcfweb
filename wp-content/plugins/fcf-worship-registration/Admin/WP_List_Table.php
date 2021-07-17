@@ -1,6 +1,6 @@
 <?php
 
-namespace WorshipRego\Admin;
+namespace WorshipRegistration\Admin;
 
 /**
  * Administration API: WP_List_Table class
