@@ -170,5 +170,28 @@ class Activator
       require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
       dbDelta( $sql );
 
-  }
+      // wp cron to delete the previous week registrations
+      if ( ! wp_next_scheduled( 'fcf-check-registrations' ) ) {
+          wp_schedule_event( time(), 'five_seconds', 'fcf-check-registrations' );
+      }
+
+      // Add a callback
+      add_action( 'fcf-check-registrations', 'RemoveOldRegistrations' );
+      /**
+       * Check the database for the previous weeks registration and soft delete
+       */
+      function RemoveOldRegistrations() {
+          syslog( LOG_INFO,'Called' );
+      }
+
+
+      add_filter( 'cron_schedules', 'example_add_cron_interval' );
+      function example_add_cron_interval( $schedules ) {
+          $schedules['five_seconds'] = array(
+              'interval' => 5,
+              'display'  => esc_html__( 'Every Five Seconds' ), );
+          return $schedules;
+      }
+    }
+
 }
