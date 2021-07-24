@@ -11,6 +11,7 @@ uploads
 .env
 .env_*
 languages
+wp-config-sample.php
 wp-config.php
 index.php
 license.txt
