@@ -49,38 +49,6 @@ function bl_remove_private_title( $title ) {
 add_filter( 'private_title_format', 'bl_remove_private_title' );
 
 /**
- * Subscriber menu
- *
- */
-function subscribers_menu( $menu ) {
-    $submenu = '<li class"menu-item"><a href="/members">Members</a></li>
-    <li class"menu-item"><a href="/calendar">Calendar</a></li>';
-
-    if(is_user_logged_in()){
-        $menu .= $submenu;
-    }
-
-    return $menu;
-}
-add_filter( 'wp_nav_menu_primary_items','subscribers_menu' );
-
-/**
- * Subscriber menu zh
- *
- */
-function subscribers_menu_zh( $menu ) {
-    $submenu = '<li class"menu-item"><a href="/zh/资讯">资讯</a></li>
-    <li class"menu-item"><a href="/zh/日历">日历</a></li>';
-
-    if(is_user_logged_in()){
-        $menu .= $submenu;
-    }
-
-    return $menu;
-}
-add_filter( 'wp_nav_menu_primaryzh_items','subscribers_menu_zh' );
-
-/**
  * Add loginout onto menus
  *
  */
@@ -133,3 +101,18 @@ if ( function_exists('pll_register_string') ) {
     pll_register_string('worship-thankyou', 'Thank you');
     pll_register_string('worship-duplicate', 'Worship duplicate message');
 }
+
+/**
+ * Register navigation menus uses wp_nav_menu in five places.
+ */
+function twentytwenty_child_menus() {
+
+    $locations = array(
+        'expanded_logged_in'   => __( 'Desktop Expanded Menu Logged in', 'twentytwenty' ),
+        'mobile_logged_in'   => __( 'Mobile Menu Logged in', 'twentytwenty' )
+    );
+
+    register_nav_menus( $locations );
+}
+
+add_action( 'init', 'twentytwenty_child_menus' );
