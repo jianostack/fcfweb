@@ -59,7 +59,9 @@ function wpsites_loginout_menu_link( $menu ) {
     return $menu;
 }
 add_filter( 'wp_nav_menu_primary_items','wpsites_loginout_menu_link' );
+add_filter( 'wp_nav_menu_primary_logged_in_items','wpsites_loginout_menu_link' );
 add_filter( 'wp_nav_menu_primaryzh_items','wpsites_loginout_menu_link' );
+add_filter( 'wp_nav_menu_primaryzh_logged_in_items','wpsites_loginout_menu_link' );
 
 /**
  * Let subscriber view private pages
