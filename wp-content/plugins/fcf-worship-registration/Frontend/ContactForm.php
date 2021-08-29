@@ -160,14 +160,24 @@ class ContactForm
             <input type="number" id="phone_number" name="phone_number" />
             </p>
             <p>
-            <label for="service">' . pll__('Which service will you be attending?') . '&nbsp;<span class="required">*</span></label>
-            <select name="service" id="service-select" required>
-            <option value="">' . pll__('Please choose 1') . '</option>
-            <option value="Breaking of Bread">' . pll__('Breaking of Bread') . '</option>
-            <option value="Worship Service">' . pll__('Worship Service') . '</option>
-            <option value="Both Services">' . pll__('Both Services') . '</option>
-            </select>
-            </p>
+            <label for="services">' . pll__('Which service will you be attending?') . '&nbsp;<span class="required">*</span></label>
+            <div>
+              <input type="checkbox" id="bob" value="bob" name="services[]">
+              <label for="bob">BOB</label>
+            </div>
+            <div>
+              <input type="checkbox" id="worship service" value="worship service" name="services[]">
+              <label for="worship_service">Worship Service</label>
+            </div>
+            <div>
+              <input type="checkbox" id="nursery" value="nursery" name="services[]">
+              <label for="nursery">Nursery</label>
+            </div>
+            <div>
+              <input type="checkbox" id="jss" value="jss" name="services[]">
+              <label for="jss">JSS</label>
+            </div>
+           </p>
             <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-registration') . '"/></p>
             </form>
             <script src="https://www.google.com/recaptcha/api.js?render=6LcNW8sZAAAAAKj4DH9Vpv9bQz1OMvDG7niQPn0K"></script>
@@ -220,10 +230,15 @@ class ContactForm
             // Verify Nonce
             if (wp_verify_nonce($_POST['getFormHtml_nonce'], 'getFormHtml') !== false)
             {
+
                 $fullname = sanitize_text_field($_POST["fullname"]);
                 $email = sanitize_email($_POST["email"]);
                 $phone_number = sanitize_text_field($_POST["phone_number"]);
-                $service = sanitize_text_field($_POST["service"]);
+                if ( is_array ( $_POST['services'] ) ) {
+                    $services = $_POST['services'];
+                    $checked_services = implode(', ', $services);
+                }
+
                 if ( pll_current_language()=='en' ) {
                     $session = 'English';
                 } else {
@@ -247,7 +262,7 @@ class ContactForm
                       'fullname' => $fullname,
                       'email' => $email,
                       'phone_number' => $phone_number,
-                      'service' => $service,
+                      'service' => $checked_services,
                       'session' => $session
                   ));
                   if ( $inserted ) {
