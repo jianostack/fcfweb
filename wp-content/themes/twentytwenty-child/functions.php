@@ -97,9 +97,10 @@ if ( function_exists('pll_register_string') ) {
     pll_register_string('worship-mobile', 'Mobile Phone Number');
     pll_register_string('worship-service', 'Which service will you be attending?');
     pll_register_string('worship-choose', 'Please choose 1');
-    pll_register_string('worship-breaking', 'Breaking of Bread');
+    pll_register_string('worship-breaking', 'BOB');
     pll_register_string('worship-worship', 'Worship Service');
-    pll_register_string('worship-both', 'Both Services');
+    pll_register_string('worship-nursery', 'Nursery');
+    pll_register_string('worship-jss', 'JSS');
     pll_register_string('worship-thankyou', 'Thank you');
     pll_register_string('worship-duplicate', 'Worship duplicate message');
 }

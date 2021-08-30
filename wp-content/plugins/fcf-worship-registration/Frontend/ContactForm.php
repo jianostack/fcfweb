@@ -163,19 +163,19 @@ class ContactForm
             <label for="services">' . pll__('Which service will you be attending?') . '&nbsp;<span class="required">*</span></label>
             <div>
               <input type="checkbox" id="bob" value="bob" name="services[]">
-              <label for="bob">BOB</label>
+              <label for="bob">' . pll__('BOB') . '</label>
             </div>
             <div>
               <input type="checkbox" id="worship service" value="worship service" name="services[]">
-              <label for="worship_service">Worship Service</label>
+              <label for="worship_service">' . pll__('Worship Service') . '</label>
             </div>
             <div>
               <input type="checkbox" id="nursery" value="nursery" name="services[]">
-              <label for="nursery">Nursery</label>
+              <label for="nursery">' . pll__('Nursery') . '</label>
             </div>
             <div>
               <input type="checkbox" id="jss" value="jss" name="services[]">
-              <label for="jss">JSS</label>
+              <label for="jss">' . pll__('JSS') . '</label>
             </div>
            </p>
             <p><input type="submit" name="form-submitted" value="' . esc_html__('Submit', 'worship-registration') . '"/></p>
@@ -234,7 +234,7 @@ class ContactForm
                 $fullname = sanitize_text_field($_POST["fullname"]);
                 $email = sanitize_email($_POST["email"]);
                 $phone_number = sanitize_text_field($_POST["phone_number"]);
-                if ( is_array ( $_POST['services'] ) ) {
+                if ( isset($_POST['services']) && is_array ( $_POST['services'] ) ) {
                     $services = $_POST['services'];
                     $checked_services = implode(', ', $services);
                 }
@@ -254,7 +254,7 @@ class ContactForm
                   " );
 
                 // if ( isset($fullname) && !isset($is_duplicate) && $captchaResponse['success'] == '1' && $captchaResponse['action'] == $action && $captchaResponse['score'] >= 0.5 && $captchaResponse['hostname'] == $_SERVER['SERVER_NAME'] ) {
-                if ( isset($fullname) && !isset($is_duplicate) ) {
+                if ( isset($fullname) && !isset($is_duplicate) && isset($checked_services) ) {
                   $inserted = $wpdb->insert(
                   $table_name,
                   array(
@@ -274,7 +274,7 @@ class ContactForm
 
                 } else {
 
-                  echo "<p>".pll__('Worship duplicate message')."</p>";
+                  echo "<p>".pll__('Form submission failed.')."</p>";
 
                 }
 
