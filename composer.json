@@ -12,7 +12,9 @@
         "wpackagist-plugin/contact-form-7":"^5.1.9",
         "humanmade/s3-uploads": "^2.2",
         "wpackagist-plugin/wp-smtp": "^1.1",
-        "league/csv": "^9.0"
+        "league/csv": "^9.0",
+        "wpackagist-plugin/limit-login-attempts-reloaded":"^2.23.1",
+        "wpackagist-plugin/advanced-nocaptcha-recaptcha":"^6.1.6"
     },
     "autoload": {
         "psr-0": {
