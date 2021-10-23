@@ -14,8 +14,6 @@ cp wp-config-sample.php wp-config.php
 
 ## S3-upload plugin
 
-Grab the plugin from it's Github and install it manually.
-
 > If you want to create your IAM user yourself, or attach the necessary permissions to an existing user, you can output the policy via `wp s3-uploads generate-iam-policy`
 
 https://github.com/humanmade/S3-Uploads
