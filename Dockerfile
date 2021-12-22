@@ -10,7 +10,7 @@ WORKDIR /app/vendor/humanmade/s3-uploads
 RUN composer install
 RUN mkdir -p /app/uploads   
 
-FROM wordpress:php8.0-fpm
+FROM wordpress:php8.0
 COPY --from=composer --chown=www-data:www-data /app/vendor/wpackagist-plugin/ /var/www/html/wp-content/plugins/
 COPY --from=composer --chown=www-data:www-data /app/vendor/humanmade/ /var/www/html/wp-content/plugins/
 COPY --from=composer --chown=www-data:www-data /app/uploads /var/www/html/wp-content/uploads
