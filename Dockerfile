@@ -1,5 +1,5 @@
 FROM composer as composer
-COPY composer.json composer.lock .
+COPY composer.json composer.lock /app
 RUN composer install \
     --ignore-platform-reqs \
     --no-interaction \
