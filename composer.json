@@ -10,15 +10,20 @@
         "wpackagist-plugin/pdf-embedder":"^4.6",
         "wpackagist-plugin/polylang":"^3.0",
         "wpackagist-plugin/contact-form-7":"^5.1.9",
-        "humanmade/s3-uploads": "^2.2",
+        "humanmade/s3-uploads": "^3.0",
         "wpackagist-plugin/wp-smtp": "^1.1",
         "league/csv": "^9.0",
-        "wpackagist-plugin/limit-login-attempts-reloaded":"^2.23.1",
-        "wpackagist-plugin/advanced-nocaptcha-recaptcha":"^6.1.6"
+        "wpackagist-plugin/limit-login-attempts-reloaded":"^2.23.1"
     },
     "autoload": {
         "psr-0": {
             "Acme": "src/"
         }    
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "johnpbloch/wordpress-core-installer": true
+        }
     }
 }
