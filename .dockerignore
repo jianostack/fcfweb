@@ -4,3 +4,4 @@ tmp
 .git
 plugins
 uploads
+wp-config.php
