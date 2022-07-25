@@ -1,29 +1,25 @@
 version: 0.2
 
 env:
-  variables:
-    REPOSITORY_TAG: $REPOSITORY_TAG
-    REPOSITORY_URI: $REPOSITORY_URI
-    DOCKER_USER: $DOCKER_USER
-    DOCKER_PASS: $DOCKER_PASS
-    COMPOSER_CACHE_DIR: .cache/composer
-
+  parameter-store:
+    DOCKER_USER: dockeruser
+    DOCKER_PASS: dockerpass
 phases:
   install:
-    commands:
-      - mkdir -p .cache/composer
+    runtime-versions:
+      php: 8.1
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=$REPOSITORY_TAG}
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker login --username $DOCKER_USER -p $DOCKER_PASS
+      - echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin 
       - docker build -t $REPOSITORY_URI:$REPOSITORY_TAG .
       - docker tag $REPOSITORY_URI:$REPOSITORY_TAG $REPOSITORY_URI:$IMAGE_TAG
   post_build:
@@ -36,6 +32,3 @@ phases:
       - printf '[{"name":"fcfweb","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
-cache:
-  paths:
-    - .cache/composer/**/*
