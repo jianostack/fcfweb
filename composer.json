@@ -13,7 +13,8 @@
         "humanmade/s3-uploads": "^3.0",
         "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
         "league/csv": "^9.0",
-        "wpackagist-plugin/limit-login-attempts-reloaded":"^2.23.1"
+        "wpackagist-plugin/limit-login-attempts-reloaded":"^2.23.1",
+        "wpackagist-plugin/lticket-tailor":"^1.10"
     },
     "autoload": {
         "psr-0": {
