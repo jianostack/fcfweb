@@ -14,11 +14,13 @@ To God be the glory!
 brew install wp-cli
 composer install
 wp core download --skip-content
-wp theme install twentytwentyone
 cp wp-config-sample.php wp-config.php
+wp theme install twentytwenty
 ```
 
 ## S3-upload plugin
+
+When using WP-CLI s3-upload causes an error :( Just remove it!
 
 > If you want to create your IAM user yourself, or attach the necessary permissions to an existing user, you can output the policy via `wp s3-uploads generate-iam-policy`
 
