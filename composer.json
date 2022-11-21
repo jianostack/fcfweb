@@ -2,7 +2,11 @@
     "repositories":[
         {
             "type":"composer",
-            "url":"https://wpackagist.org"
+            "url":"https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
         }
     ],
     "require": {
@@ -14,7 +18,8 @@
         "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
         "league/csv": "^9.0",
         "wpackagist-plugin/limit-login-attempts-reloaded":"^2.23.1",
-        "wpackagist-plugin/ticket-tailor":"^1.10"
+        "wpackagist-plugin/ticket-tailor":"^1.10",
+        "wpackagist-theme/twentytwenty":"*"
     },
     "autoload": {
         "psr-0": {
