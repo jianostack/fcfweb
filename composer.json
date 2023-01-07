@@ -2,15 +2,10 @@
     "repositories":[
         {
             "type":"composer",
-            "url":"https://wpackagist.org",
-            "only": [
-                "wpackagist-plugin/*",
-                "wpackagist-theme/*"
-            ]
+            "url":"https://wpackagist.org"
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "^6.0.3",
         "wpackagist-plugin/pdf-embedder":"^4.6",
         "wpackagist-plugin/polylang":"^3.0",
         "wpackagist-plugin/contact-form-7":"^5.1.9",
