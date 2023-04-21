@@ -21,3 +21,9 @@ steps:
     sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
     php -version
   displayName: 'Use PHP version $(phpVersion)'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Microsoft Azure Sponsorship'
+    appName: 'wponappservice'
+    package: $(System.DefaultWorkingDirectory)/**/*.zip
