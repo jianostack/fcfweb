@@ -87,7 +87,9 @@ jobs:
     steps:
       - name: Azure Login
         uses: Azure/login@v1
-        
+        with:
+          creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
