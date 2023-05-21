@@ -17,15 +17,15 @@
 # For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples
 
-name: Build and deploy PHP app to Azure Web App master
+name: Build and deploy PHP app to Azure Web App staging
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "staging" ]
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: wponappservice    # set this to your application's name
+  AZURE_WEBAPP_NAME: fcfwebstaging    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   PHP_VERSION: '8.1'                  # set this to the PHP version to use
 
@@ -83,7 +83,6 @@ jobs:
     environment:
       name: 'Development'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
     steps:
       - name: Azure Login
         uses: Azure/login@v1
