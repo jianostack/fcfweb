@@ -31,3 +31,6 @@ wp-signup.php
 wp-trackback.php
 xmlrpc.php
 license.txt
+wp-content/advanced-cache.php
+wp-content/cache/
+wp-content/w3tc-config/
