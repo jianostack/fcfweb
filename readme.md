@@ -15,7 +15,6 @@ brew install wp-cli
 composer install
 wp core download --skip-content
 cp wp-config-sample.php wp-config.php
-wp theme install twentytwenty
 ```
 
 ## S3-upload plugin
