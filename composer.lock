@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7406ecd2cfa4a6443ee248cd8e01d8a",
+    "content-hash": "1de4f431d5a5951095378ee29f32ba54",
     "packages": [
         {
             "name": "composer/installers",
@@ -327,6 +327,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/polylang/"
+        },
+        {
+            "name": "wpackagist-plugin/sermone-online-sermons-management",
+            "version": "1.0.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/sermone-online-sermons-management/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/sermone-online-sermons-management.zip?timestamp=1619575014"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/sermone-online-sermons-management/"
         },
         {
             "name": "wpackagist-plugin/ticket-tailor",

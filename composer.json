@@ -14,7 +14,8 @@
         "wpackagist-plugin/limit-login-attempts-reloaded":"^2.23.1",
         "wpackagist-plugin/ticket-tailor":"^1.10",
         "wpackagist-theme/twentytwenty":"2.1",
-        "wpackagist-plugin/w3-total-cache": "^2.3"
+        "wpackagist-plugin/w3-total-cache": "^2.3",
+        "wpackagist-plugin/sermone-online-sermons-management": "^1.0"
     },
     "autoload": {
         "psr-0": {
