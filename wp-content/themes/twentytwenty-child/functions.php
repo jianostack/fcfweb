@@ -119,3 +119,11 @@ function twentytwenty_child_menus() {
 }
 
 add_action( 'init', 'twentytwenty_child_menus' );
+
+
+
+/**
+ * disable theme editor 
+ */
+define('DISALLOW_FILE_EDIT', true);
+
