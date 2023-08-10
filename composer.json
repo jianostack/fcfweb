@@ -14,7 +14,7 @@
         "wpackagist-plugin/ticket-tailor":"^1.10",
         "wpackagist-theme/twentytwenty":"2.1",
         "wpackagist-plugin/w3-total-cache": "^2.3",
-        "wpackagist-plugin/wp-2fa": "*"
+        "wpackagist-plugin/wp-2fa": "^2.5"
     },
     "autoload": {
         "psr-0": {
