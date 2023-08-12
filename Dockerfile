@@ -1,7 +1,7 @@
 FROM composer as composer
 COPY composer.json composer.lock /app/
 RUN composer install --no-scripts --no-interaction --no-dev --prefer-dist
-FROM wordpress:php8.2
+FROM wordpress:php8.1
 COPY --from=composer --chown=www-data:www-data /app /var/www/html
 COPY --chown=www-data:www-data wp-content/plugins/fcf-worship-registration /var/www/html/wp-content/plugins/fcf-worship-registration
 COPY --chown=www-data:www-data wp-content/themes/twentytwenty-child /var/www/html/wp-content/themes/twentytwenty-child
