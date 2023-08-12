@@ -15,12 +15,6 @@ brew install wp-cli
 composer install
 wp core download --skip-content
 cp wp-config-sample.php wp-config.php
+wp server
 ```
-
-## S3-upload plugin
-
-When using WP-CLI s3-upload causes an error :( Just remove it!
-
-> If you want to create your IAM user yourself, or attach the necessary permissions to an existing user, you can output the policy via `wp s3-uploads generate-iam-policy`
-
-https://github.com/humanmade/S3-Uploads
+a:8:{i:0;s:21:"polylang/polylang.php";i:1;s:19:"akismet/akismet.php";i:2;s:36:"contact-form-7/wp-contact-form-7.php";i:3;s:29:"easy-wp-smtp/easy-wp-smtp.php";i:4;s:35:"jetpack-protect/jetpack-protect.php";i:5;s:41:"password-protected/password-protected.php";i:6;s:29:"pdf-embedder/pdf_embedder.php";i:7;s:17:"wp-2fa/wp-2fa.php";}
