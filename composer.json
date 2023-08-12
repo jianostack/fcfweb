@@ -9,7 +9,7 @@
         "wpackagist-plugin/pdf-embedder":"^4.6",
         "wpackagist-plugin/polylang":"^3.0",
         "wpackagist-plugin/contact-form-7":"^5.1.9",
-        "wpackagist-plugin/easy-wp-smtp": "^1.4.7",
+        "wpackagist-plugin/easy-wp-smtp": "^2.1.2",
         "league/csv": "^9.0",
         "wpackagist-plugin/ticket-tailor":"^1.10",
         "wpackagist-theme/twentytwenty":"2.1",

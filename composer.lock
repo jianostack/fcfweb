@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1db0ed9401bf705c0b1433b407c75b46",
+    "content-hash": "c1b1967403ce643c979aad60435c4dcf",
     "packages": [
         {
             "name": "composer/installers",
@@ -259,15 +259,15 @@
         },
         {
             "name": "wpackagist-plugin/easy-wp-smtp",
-            "version": "1.5.3",
+            "version": "2.1.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/easy-wp-smtp/",
-                "reference": "tags/1.5.3"
+                "reference": "tags/2.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/easy-wp-smtp.1.5.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/easy-wp-smtp.2.1.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
