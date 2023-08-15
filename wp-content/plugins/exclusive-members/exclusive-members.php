@@ -13,7 +13,7 @@
  * @package           Exclusive_Members
  *
  * @wordpress-plugin
- * Plugin Name:       exclusive-members
+ * Plugin Name:       Exclusive Members
  * Plugin URI:        https://github.com/jianostack/exclusive-members
  * Description:       Only allow certain emails to register. 
  * Version:           1.0.0
