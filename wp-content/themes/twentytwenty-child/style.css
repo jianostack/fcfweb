@@ -7,6 +7,10 @@ License:      GNU General Public License v2 or later
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+body {
+    background: #E0FFFF;
+}
+
 .page-id-1380, .page-id-1380 h1, .page-id-1380 h2, .page-id-1380 h3, .page-id-1380 h4, .page-id-1380 h5, .page-id-1380 p {
     font-family: 'Open Sans', sans-serif !important;
 }
