@@ -15,7 +15,8 @@
         "wpackagist-theme/twentytwenty":"2.1",
         "wpackagist-plugin/wp-2fa": "^2.5",
         "wpackagist-plugin/jetpack-protect": "^1.4",
-        "wpackagist-plugin/w3-total-cache": "^2.4"
+        "wpackagist-plugin/w3-total-cache": "^2.4",
+        "wpackagist-plugin/password-protected": "^2.6"
     },
     "autoload": {
         "psr-0": {
