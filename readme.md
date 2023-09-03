@@ -17,3 +17,9 @@ wp core download --skip-content
 cp wp-config-sample.php wp-config.php
 wp server
 ```
+
+## W3 Total Cache Plugin
+
+To purge the CSS files in the theme you will need to:
+1. Go to CDN > General > Upload theme files 
+2. Go to Azure Endpoints and purge the CDN cache
