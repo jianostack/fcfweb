@@ -8,8 +8,8 @@ wp-content/themes/*
 wp-content/plugins/*
 !fcf-worship-registration
 uploads
-.env
-.env_*
+.env.*
+!.env.example
 languages
 wp-config-sample.php
 wp-config.php
