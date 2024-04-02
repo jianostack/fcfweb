@@ -65,10 +65,24 @@ add_filter( 'wp_nav_menu_primaryzh_logged_in_items','wpsites_loginout_menu_link'
 
 /**
  * Let subscriber view private pages
- *
+ * 
+ * Changing the capabilities of a role is persistent, meaning the added capability will stay in effect until explicitly revoked.
+ * This setting is saved to the database (in table wp_options, field wp_user_roles), so it might be better to run this on theme/plugin activation.
  */
-$subRole = get_role( 'subscriber' );
-$subRole->add_cap( 'read_private_pages' );
+function add_theme_caps(){
+    global $pagenow;
+    $role = get_role( 'subscriber' );
+    
+    if ( 'themes.php' == $pagenow && isset( $_GET['activated'] ) ) {     
+        $role->add_cap( 'read_private_pages' ); 
+        $role->add_cap( 'read_private_posts' ); 
+    } else {
+        // Theme is deactivated
+        $role->remove_cap( 'read_private_pages' ); 
+        $role->remove_cap( 'read_private_posts' ); 
+    }
+}
+add_action( 'load-themes.php', 'add_theme_caps' );
 
 /**
  * Subscriber login redirect
