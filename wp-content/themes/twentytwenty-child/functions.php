@@ -71,7 +71,7 @@ add_filter( 'wp_nav_menu_primaryzh_logged_in_items','wpsites_loginout_menu_link'
  */
 function add_theme_caps(){
     global $pagenow;
-    $role = get_role( 'subscriber' );
+    $role = get_role( 'Subscriber' );
     
     if ( 'themes.php' == $pagenow && isset( $_GET['activated'] ) ) {     
         $role->add_cap( 'read_private_pages' ); 
