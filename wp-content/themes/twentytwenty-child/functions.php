@@ -68,6 +68,11 @@ add_filter( 'wp_nav_menu_primaryzh_logged_in_items','wpsites_loginout_menu_link'
  * 
  * Changing the capabilities of a role is persistent, meaning the added capability will stay in effect until explicitly revoked.
  * This setting is saved to the database (in table wp_options, field wp_user_roles), so it might be better to run this on theme/plugin activation.
+ * 
+ * GOTCHA 1
+ * Latest posts block does not work on private posts
+ * GOTCHA 2
+ * The parent theme must be activated first, followed by child theme. 
  */
 function add_theme_caps(){
     global $pagenow;
